@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>自动选项卡</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        list-style: none;
+      }
+      .warp {
+        height: 740px;
+        width: 1200px;
+        background: url(images/bg.png);
+        margin: 0 auto;
+        /* 防止margin 传递 */
+        overflow: hidden;
+      }
+      .box {
+        width: 800px;
+        height: 397px;
+        margin: 0 auto;
+        margin-top: 228px;
+        background-color: #ffb746;
+        overflow: hidden;
+      }
+      .nav {
+        width: 100%;
+        height: 60px;
+        /* background-color: #fff; */
+      }
+      .nav li {
+        float: left;
+        width: 25%;
+        font: 16px / 60px "微软雅黑";
+        text-align: center;
+        background-color: #fff;
+        cursor: pointer;
+      }
+      .box div {
+        display: none;
+      }
+      .box div img {
+        display: block;
+        width: 250px;
+        padding: 30px 0 0 100px;
+      }
+      .nav .active {
+        background-color: #ffb746;
+        color: #fff;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="warp">
+      <div class="box">
+        <ul class="nav">
+          <li class="active">暖色空间</li>
+          <li>情迷薰衣草</li>
+          <li>蔚蓝大海</li>
+          <li>青色草原</li>
+        </ul>
+        <div style="display: block">
+          <img src="images/4.png" alt="" />
+        </div>
+        <div>
+          <img src="images/1.png" alt="" />
+        </div>
+        <div>
+          <img src="images/2.png" alt="" />
+        </div>
+        <div>
+          <img src="images/3.png" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let box = document.querySelector(".box");
+      let liLists = document.querySelectorAll(".nav li");
+      let boxs = document.querySelectorAll(".box div");
+      let index = null;
+      let timer = null;
+
+      //添加事件
+      for (let i = 0; i < liLists.length; i++) {
+        //存储这个元素的下标
+
+        liLists[i].forindex = i;
+        liLists[i].onclick = function () {
+          tab(this.forindex);
+          index = this.forindex;
+        };
+      }
+      //控制事件的样式
+      function tab(index) {
+        //清空之前的样式
+        for (let j = 0; j < liLists.length; j++) {
+          boxs[j].style.display = "none";
+          liLists[j].classList.remove("active");
+        }
+        //将这个元素的下标的的图片显示
+        boxs[index].style.display = "block";
+        //为这个元素显示active
+        liLists[index].classList.add("active");
+      }
+      //定时器
+      function timeRun() {
+        timer = setInterval(function () {
+          index++;
+          if (index > liLists.length - 1) {
+            index = 0;
+          }
+          tab(index);
+        }, 1000);
+      }
+      timeRun();
+
+      //鼠标移入时候清除定时器
+      box.onmouseover = function () {
+        clearInterval(timer);
+      };
+      //鼠标移出时候开始定时器
+      box.onmouseout = timeRun;
+    </script>
+  </body>
+</html>
