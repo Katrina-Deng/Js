@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>start</button>
+    <button>clear 2</button>
+    <script>
+      let btn = document.querySelectorAll("button");
+      let time1 = 0;
+      let time2 = 0;
+      let time3 = 0;
+      btn[0].onclick = function () {
+        time1=  setTimeout(() => {
+          console.log("time 1");
+        }, 1000);
+
+        time2=  setTimeout(() => {
+          console.log("time 2");
+        }, 2000);
+
+         time3=  setTimeout(() => {
+          console.log("time 3");
+        }, 3000);
+        console.log(time1,time2,time3);
+      };
+      btn[1].onclick = function  () {
+          clearTimeout(time2);
+      }
+    </script>
+  </body>
+</html>

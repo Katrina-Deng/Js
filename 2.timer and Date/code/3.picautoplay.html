@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .first {
+        margin: 0 auto;
+        width: 1000px;
+        height: 700px;
+        background-image: url("img/bg.jpg");
+        position: relative;
+      }
+      .warp {
+        width: 536px;
+        height: 356px;
+        background-color: red;
+        position: absolute;
+        left: 276px;
+        top: 165px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="first">
+      <div class="warp">
+          <img src="img/1.jpg" class="pic" / >
+      </div>
+    </div>
+    <script>
+        let img = document.querySelector('.pic')
+        let imgs = ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg"];
+
+        let num = 0;
+
+        setInterval(() => {
+            num++;
+            if(num >= imgs.length){
+                num = 0;
+            }
+            img.src = imgs[num];
+        }, 2000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // setTimeout(fn("非常好"),2000); 
+        //worng
+        function fn (txt) {
+            console.log("依泉润唇膏" + txt);
+        }
+
+        // 1 string
+        // setTimeout('fn("非常好")',2000);
+
+        // 2 匿名函数
+        // setTimeout(function(){fn("非常好")},2000);
+
+        //bind
+        let obj = {
+            age:18,
+            getAge: function  () {
+                console.log(this.age);
+            }
+        }
+        // obj.getAge(); //这里没有问题 this 还是obj
+        // let getNewAge = obj.getAge;
+        // console.log(getNewAge);
+        // getNewAge(); //6.paramPro.html:26 undefined this 指向window
+        let getNewAge = obj.getAge.bind(obj); //将this 永远指向obj
+        getNewAge(); // ok 没有问题 
+    </script>
+</body>
+</html>

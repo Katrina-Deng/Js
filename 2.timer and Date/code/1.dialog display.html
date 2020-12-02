@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        aside{
+            width: 100%;
+            height: 30px;
+            background-color: rgba(146, 132, 132,0.5);
+            text-align: center;
+            font:16px/30px "微软雅黑";
+            transform: translateY(-30px);
+            transition: .5s;
+        }
+        button{
+            display: block;
+            width: 50px;
+            height: 30px;
+            position: absolute;
+            right: 0;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <aside>请输入姓名</aside>
+    <button>提交</button>
+    <script>
+        let aside = document.querySelector('aside');
+        let btn = document.querySelector('button');
+        
+        btn.onclick = function() {
+            aside.style.transform = 'translateY(0px)';
+            setTimeout(function() {
+                aside.style.transform = 'translateY(-30px)';
+            },2000)
+        }
+    </script>
+</body>
+</html>
