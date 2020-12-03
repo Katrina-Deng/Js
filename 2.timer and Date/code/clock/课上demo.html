@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//h2D XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/h2D/xhtml1-transitional.h2d">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>超酷数码钟表</title>
+    <link href="miaov_style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="clock" class="date">
+      <h2><img src="images/title.png" /></h2>
+      <div class="year">
+        <img class="num" src="images/0.png" alt="0" longdesc="#" />
+        <img class="num" src="images/0.png" alt="0" longdesc="#" />
+        <img class="num" src="images/0.png" alt="0" longdesc="#" />
+        <img class="num" src="images/0.png" alt="0" longdesc="#" />
+        <img src="images/year.png" alt="year" longdesc="#" />
+        <img class="num" src="images/0.png" alt="0" longdesc="#" />
+        <img class="num" src="images/0.png" alt="0" longdesc="#" />
+        <img src="images/month.png" alt="month" longdesc="#" />
+        <img class="num" src="images/0.png" alt="0" longdesc="#" />
+        <img class="num" src="images/0.png" alt="0" longdesc="#" />
+        <img src="images/seven.png" alt="seven" longdesc="#" />
+      </div>
+      <div class="time">
+        <img class="num" src="images/0.png" alt="0" longdesc="#" />
+        <img class="num" src="images/0.png" alt="0" longdesc="#" />
+        <img src="images/sign.png" alt="sign" longdesc="#" />
+        <img class="num" src="images/0.png" alt="0" longdesc="#" />
+        <img class="num" src="images/0.png" alt="0" longdesc="#" />
+        <img src="images/sign.png" alt="sign" longdesc="#" />
+        <img class="num" src="images/0.png" alt="0" longdesc="#" />
+        <img class="num" src="images/0.png" alt="0" longdesc="#" />
+        <img class="pos2" src="images/week.png" alt="week" longdesc="#" />
+        <img class="num2" src="images/one.png" alt="1" longdesc="#" />
+      </div>
+      <div class="url" title="超酷时钟">
+        <a href="#/"
+          ><img src="images/miaov.png" alt="妙味课堂" longdesc="#"
+        /></a>
+      </div>
+    </div>
+    <script>
+      var numImg = document.querySelectorAll(".num");
+      let num2 = document.querySelector('.num2');
+
+      let date = new Date();
+      let week = date.getDay();
+      let weekPic = ["one","two","three","four","five","six","seven"];
+
+      console.log(date);
+      console.log(week);
+
+
+      // 执行函数
+      clock();
+      // 定时器里面不断执行
+      setInterval(clock, 1000);
+        //封装函数
+      function clock() {
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+        let h = date.getHours();
+        let m = date.getMinutes();
+        let s = date.getSeconds();
+        let week = date.getDay();
+        
+        //隐式转成字符串
+        let timer =
+          "" +
+          year +
+          addZero(month) +
+          addZero(day) +
+          addZero(h) +
+          addZero(m) +
+          addZero(s);
+
+        //console.log(timer); //20201203230316
+        // 将timer 第 n 个数字 和 num对应 起来
+        for (let i = 0; i < numImg.length; i++) {
+          numImg[i].src = `images/${timer[i]}.png`;
+        }
+        num2.src = `images/${weekPic[week-1]}.png`;
+        //补零
+        function addZero(n) {
+          if (n < 10) {
+            return "0" + n;
+          } else {
+            return n;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
