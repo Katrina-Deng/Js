@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let str = "KatrinaQuanCha";
+
+      //存入某個字符作爲分割點
+      let arr = str.split("a");
+
+      console.log(arr);
+      /*
+            (5) ["K", "trin", "Qu", "nCh", ""]
+                    0: "K"
+                    1: "trin"
+                    2: "Qu"
+                    3: "nCh"
+                    4: ""
+                    length: 5
+                    __proto__: Array(0)
+        */
+      //若不传入 参数就是 默认分割每个字符
+      let arr1 = str.split("");
+      console.log(arr1);
+      // ["K", "a", "t", "r", "i", "n", "a", "Q", "u", "a", "n", "C", "h", "a"]
+
+      //使用场景
+      /** 
+            前后端交互时候，后端传过来一条字符串数据 
+            我们需要利用这个方法对字符串进行切割
+        */
+      let data = "ada;ruby;cindy";
+      let dataArr = data.split(";");
+      console.log(dataArr);
+      //  (3) ["ada", "ruby", "cindy"]
+    </script>
+  </body>
+</html>

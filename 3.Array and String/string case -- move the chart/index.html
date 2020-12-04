@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>文字搬运工</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+
+  <body>
+    <div class="bg">
+      <div id="box">
+        <textarea>
+12月4日从证监会获悉，齐鲁银行等3家公司12月10日首发上会，山东省或再添一家上市银行。根据齐鲁银行披露的首次公开发行股票招股说明书，该行拟登陆上海证券交易所，发行后的总股本不超过54.97亿股。关于募集资金用途，齐鲁银行称：“募集资金在扣除发行费用后，将全部用于补充本行的核心一级资本，提高本行的资本充足水平。”该行资本充足率15.19% ；一级资本充足率11.76% ；核心一级资本充足率9.5%，较2019年末下滑了0.66个百分点。值得注意的是，银保监会披露的数据显示，截止今年三季度末，商业银行核心一级资本充足率为10.44%。</textarea
+        >
+        <div>
+          <a href="javascript:;"></a>
+          <span>0/0</span>
+          <ul>
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+
+        <p></p>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    let box = document.querySelector("#box");
+    let btn = box.querySelector("a");
+    let text = box.querySelector("textarea");
+    let p = box.querySelector("p");
+    let charAll = box.querySelector("span");
+    let ul = box.querySelector("ul");
+    let li = ul.querySelectorAll("li");
+    let index = null;
+    let timer = null;
+    let len = text.value.length;
+    console.log(len);
+
+    btn.onclick = function () {
+
+        // 如果结束后多次点击，会让index 累加
+        if(index == len){
+            return;
+        }
+        ul.style.opacity = 1;
+      //设定定时器动起来
+      //定时器多次点击会产生多个定时器对象，所以开始定时器之前清除定时器--- 定时器管理
+      clearInterval(timer);
+      timer =  setInterval(function () {
+
+        //从第一个开始以此截取
+        text.value = text.value.substr(1);
+        //p从text.value第一个开始开始获取
+        p.innerHTML += text.value.charAt(0);
+        //字数统计
+        index++;
+        charAll.innerHTML = `${index}/${len}`;
+        //控制class="active" 在li 里面运动
+        li[(index-1)%li.length].classList.remove("active");
+        li[(index)%li.length].classList.add("active");
+        //边界处理，以及定时器停止
+        if(index >= len){
+            //结束时候让 ul消失
+            ul.style.opacity = 0;
+            clearInterval(timer);
+        }
+      }, 20);
+    };
+  </script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = 'KatrinaQuanCha'
+
+        console.log(str.slice(3)); // rinaQuanCha
+        console.log(str.slice(3,5)); //ri 第5个没有包进去
+
+        console.log(str.substr(3)); // rinaQuanCha
+        console.log(str.substr(3,5)); // rinaQ
+        console.log(str.substr(13,10)); // 超过边界，只取最后一个 a，
+        console.log(str.substr(14,10)); // 返回一个空
+
+        console.log(str.substring(2,6)); // trin 不包含6
+        console.log(str.substring(6,2)); // trin 不包含6
+        console.log(str.substring(2,2)); // 返回空
+
+    </script>
+</body>
+</html>
