@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      obj = {
+        name: "lili",
+        age: 12,
+        sex: "felman",
+        job: "student",
+      };
+
+      let ar = Object.keys(obj);
+      let ar1 = Object.values(obj);
+
+      console.log(ar, ar1);
+      //(4) ["name", "age", "sex", "job"] (4) ["lili", 12, "felman", "student"]
+
+      for (let n in obj) {
+        console.log(n);
+        console.log(obj[n]);
+      }
+      //  name
+      //  lili
+      //  age
+      //  12
+      //  sex
+      //  felman
+      //  job
+      //  student
+
+      delete obj.job;
+      console.log(obj);
+      // {name: "lili", age: 12, sex: "felman"}
+    </script>
+  </body>
+</html>
