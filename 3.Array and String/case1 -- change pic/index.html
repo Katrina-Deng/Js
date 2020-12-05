@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片切换</title>
+    <style>
+        body {
+            height: 100vh;
+            background-color: rgb(247, 202, 208);
+        }
+
+        .wrap {
+            width: 860px;
+            height: 400px;
+            margin: 50px auto;
+            position: relative;
+
+        }
+
+
+        img {
+            position: absolute;
+            z-index: 2;
+        }
+
+        #prev {
+            width: 20px;
+            height: 30px;
+            position: absolute;
+            left: 100px;
+            top: 32%;
+            background: url(./img/prev.png) no-repeat;
+            z-index: 9999;
+        }
+
+        #next {
+            width: 20px;
+            height: 30px;
+            position: absolute;
+            left: 460px;
+            top: 32%;
+            background: url(./img/next.png) no-repeat;
+            z-index: 9999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <img src="./img/b1.png" alt="">
+        <img src="./img/f2.png" alt="">
+        <img src="./img/b3.png" alt="">
+        <div class="btns">
+            <a href="javascript:;" id="prev">
+            </a>
+            <a href="javascript:;" id="next">
+            </a>
+        </div>
+
+    </div>
+    <script src="./fns.js"></script>
+    <script>
+        // let arr = ['./img/b1.png', './img/f2.png', './img/b3.png'];
+        let left = [0, 150, 300];
+        let imgs = document.querySelectorAll('.wrap img');
+        imgs = Array.from(imgs)
+        let prev = document.querySelector('#prev');
+        let next = document.querySelector('#next');
+
+        /*  arr.forEach((item, index) => {
+             imgs[index].src = item;
+         }); */
+        
+        
+        imgs.forEach((img, index) => {
+            css(img, 'left', left[index])
+            css(img,'scale',1)
+            css(imgs[Math.floor(imgs.length / 2)], 'scale', 1.2);
+            css(imgs[Math.floor(imgs.length / 2)], 'zIndex', 10);
+        });
+
+        prev.addEventListener('click', () => {
+
+        })
+        next.addEventListener('click', () => {
+            imgs.push(imgs.splice(0, 1)[0])
+            mTween({
+                el: imgs[0],
+                attr: {
+                    'scale': 1,
+                    'left': left[0],
+                    'zIndex': 2
+                },
+                time: 400,
+                cb() {
+                    let src = imgs[0].src.split('')
+                    src.splice(-6,1,'b')
+                    src = src.join('');
+                    imgs[0].src = src;
+                    css(imgs[0],'zIndex',2)
+                }
+            })
+            mTween({
+                el: imgs[1],
+                attr: {
+                    'scale': 1.2,
+                    'left': left[1],
+                    'zIndex': 10
+                },
+                time: 400,
+                cb(){
+                    let src = imgs[1].src.split('')
+                    src.splice(-6,1,'f')
+                    src = src.join('');
+                    console.log(src)
+                    imgs[1].src = src;
+                    css(imgs[1],'zIndex',10)
+                }
+            })
+            mTween({
+                el: imgs[2],
+                attr: {
+                    'left': left[2],
+                    'zIndex': 2,
+                    'scale': 1
+                },
+                time: 400,
+                cb(){
+                    css(imgs[0],'zIndex',2)
+                }
+            })
+        })
+
+    </script>
+</body>
+
+</html>

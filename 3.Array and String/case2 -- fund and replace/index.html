@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div id="box">
+        <div id="content">
+            目前主要针对的是javascript培训，同时还提供了css教程、javascript视频、js特效等，最新推出了外地学员们喜欢的javascript网络课程服务，同时还为处于javascript入门阶段的朋友录制了大量javascript视频，其中涉及了大量javascript基础知识，希望妙味课堂推出的javascript网络培训课程能带给大家更多惊喜。目前主要针对的是javascript培训，同时还提供了css教程、javascript视频、js特效等，最新推出了外地学员们喜欢的javascript网络课程服务，同时还为处于javascript入门阶段的朋友录制了大量javascript视频，其中涉及了大量javascript基础知识，希望妙味课堂推出的javascript网络培训课程能带给大家更多惊喜。目前主要针对的是javascript培训，
+        </div>
+        <div id="open">
+            <a href="javascript:;">展开</a>
+            <ul style="display: none;">
+                <li><a href="javascript:;">查找</a></li>
+                <li><a href="javascript:;">替换</a></li>
+            </ul>
+        </div>
+        <div id="fun" style="display: none;">
+            <div class="btns">
+                <a href="javascript:;" class="active">查找</a>
+                <a href="javascript:;">替换</a>
+            </div>
+
+            <div id="search" style="display: block;">
+                <input type="text" />
+                <input type="button" value="" />
+            </div>
+            <div id="replace">
+                <input type="text" />
+                <input type="text" />
+                <input type="button" value="" />
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
+<script type="text/javascript">
+    /*
+        1、列表的显示隐藏
+        2、显示查找或者替换的功能项
+        3、上边列表选项和下边选项的关联
+        4、功能项自身选项切换
+        5、实现查找功能
+        6、实现替换功能、删除功能
+        7、检查
+    */
+
+    var open = document.getElementById('open');
+    var oBtn = open.getElementsByTagName('a')[0];
+    var oUl = open.getElementsByTagName('ul')[0];
+    var aLi = oUl.getElementsByTagName('li');
+    var fun = document.getElementById('fun');
+    var aBtn = fun.getElementsByTagName('a');
+    var aDiv = fun.getElementsByTagName('div');
+    var search = document.getElementById('search');
+    var aInp = search.getElementsByTagName('input');
+    var con = document.getElementById('content');
+
+    var replace = document.getElementById('replace');
+    var aInp2 = replace.getElementsByTagName('input');
+
+    var text = con.innerHTML;
+    //点击打开按钮，展开列表
+    oBtn.onclick = function() {
+        if (!this.onOff) {
+            oUl.style.display = 'block';
+            // this.onOff=true;
+        } else {
+            oUl.style.display = 'none';
+            //this.onOff=false;
+        }
+        //把开关的值改成相反的。
+        this.onOff = !this.onOff;
+    }
+    for (var i = 0; i < aLi.length; i++) {
+        //展开功能
+        aLi[i].index = i;
+        aLi[i].onclick = function() {
+                fun.style.display = 'block';
+
+                //调用对应按钮的click事件绑定的函数，只要能找到对象就可以找到对应的属性。
+                aBtn[this.index].onclick();
+                //直接调用展开按钮的事件。
+                oBtn.onclick();
+            }
+            //功能区的选项卡。
+        aBtn[i].index = i;
+        aBtn[i].onclick = function() {
+            //清掉所有
+            for (var i = 0; i < aBtn.length; i++) {
+                aBtn[i].className = '';
+                aDiv[i + 1].style.display = 'none';
+            }
+            //添加当前。
+            this.className = 'active';
+            //div比按钮多一个，按钮下标从0开始，div的下标是从1开始。
+            aDiv[this.index + 1].style.display = 'block';
+        }
+    }
+    //查找的实现
+    aInp[1].onclick = function() {
+        var value = aInp[0].value;
+
+
+        if (value == '') {
+            alert('请输入要查找的内容');
+            return;
+        }
+        if (text.indexOf(value) == -1) {
+            alert("你要查找的内容不存在");
+            return;
+        }
+
+        //高亮的实现。
+        con.innerHTML = text.split(value).join('<span>' + value + '</span>');
+
+    }
+
+    //替换和删除的实现。
+    aInp2[2].onclick = function() {
+        var value = aInp2[0].value;
+        if (value == '') {
+            alert('请输入要进行替换或者删除的内容');
+            return;
+        }
+        if (text.indexOf(value) == -1) {
+            alert('你要替换或删除的内容不存在');
+            return;
+        }
+        if (aInp2[1].value == '') {
+            //如果第二个输入框是空的，进行删除操作。
+
+            //confirm带确定的提示框，如果点了确定，它会返回true，否则就是false。
+            if (confirm('确定要删除' + value)) {
+                con.innerHTML = text.split(value).join('');
+
+            } else {
+                //如果点了取消就不更新字符串。
+                return;
+            }
+
+        } else {
+            //替换操作。
+
+            con.innerHTML = text.split(value).join(aInp2[1].value);
+        }
+        //更新字符串。
+        text = con.innerHTML;
+    }
+</script>
