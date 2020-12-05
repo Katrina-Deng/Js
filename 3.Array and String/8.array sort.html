@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [0,-2,8,34,13,3,7,9];
+
+        //从小到大
+        arr.sort(function (n1,n2) {
+            //n1>n2 返回1 交换位置
+            //n2>n1 返回-1 不换位置
+            return n1-n2;
+        })
+        // 8) [-2, 0, 3, 7, 8, 9, 13, 34]
+
+        //从大到小
+        arr.sort(function (n1,n2) {
+            //n1>n2 返回1 交换位置
+            //n2>n1 返回-1 不换位置
+            return n2-n1;
+        })
+        //8) [34, 13, 9, 8, 7, 3, 0, -2] 
+
+        // 不传函数 
+        arr.sort()
+        // [-2, 0, 13, 3, 34, 7, 8, 9]
+        //按照首字母的字典码排列
+       console.log(arr);
+    </script>
+</body>
+</html>

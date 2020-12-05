@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = ["a", "b", "c", "d", "e"];
+      //   let arr1 = [1, 2, 3, 4, 5, 6];
+
+      // //传入一个函数，函数第一个参数是每个元素
+      // //第二个参数是每个元素的下标
+      //   arr.forEach(function  (item,index) {
+      //       console.log(item);
+      //       console.log(index);
+      //       return item +1
+      //   })
+      //   console.log(arr);
+      // // 利用他dom元素可以循环，利用他可以给每个dom 元素添加事件
+
+      //过滤方法
+      // 场景：商品过滤，商品筛选
+      //场景：后端返回的数据太多，可以利用这个进行过滤
+      //   let arr2 = arr.filter((item) => {
+      //     return item == "b" ? false : true;
+      //   });
+      //   console.log(arr2);
+
+      // //map
+      // // //对每个元素进行循环操作，并且根据操作，返回一个修改后的数组，
+      // //不会改变原来的数组
+      //    let arr2 = arr.map((item) => {
+      //     return item + "Ellen"
+      //   });
+      //   console.log(arr2);
+      //   // ["aEllen", "bEllen", "cEllen", "dEllen", "eEllen"]
+
+      //reduce
+      //累加操作
+      //参数：
+      //回调函数，四个参数， 初始值/开始计算后就是累计的值 ，数组里面数字，下标，原数组
+      //[初始值]初始值是可选的，如果没有就是默认数组第一个数字
+      //返回值是相加后的值
+      //   let arr1 = [1, 2, 3, 4, 5, 6];
+      //   let r = arr1.reduce(function (pre, now, index, arr) {
+      //     console.log(pre, now, index, arr);
+      //     return pre + now;
+      //   }, 100);
+      //   console.log(r);
+      //   100 1 0 (6) [1, 2, 3, 4, 5, 6]
+      //   101 2 1 (6) [1, 2, 3, 4, 5, 6]
+      //   103 3 2 (6) [1, 2, 3, 4, 5, 6]
+      //   106 4 3 (6) [1, 2, 3, 4, 5, 6]
+      //   110 5 4 (6) [1, 2, 3, 4, 5, 6]
+      //   115 6 5 (6) [1, 2, 3, 4, 5, 6]
+      //   121
+
+      //every
+      //   let arr1 = [1, 2, 3, 4, 5, 6];
+      //   let r= arr1.every(function  (item,index) {
+      //     //   return item>5; //false
+      //     return item < 7; //true
+      //   })
+      //   console.log(r);
+      //some
+    //   let arr1 = [1, 2, 3, 4, 5, 6];
+    //   let r = arr1.some(function (item, index) {
+    //     //return item>5; //true
+    //     return item > 7; //false
+    //   });
+    //   console.log(r);
+    </script>
+  </body>
+</html>

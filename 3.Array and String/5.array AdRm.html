@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [1,'b',{key:"gold"},function(){alert(123)}];
+
+        //添加
+        //后面添加,参数可以多个
+        arr.push("abc",123); 
+        // (6) [1, "b", {…}, ƒ, "abc", 123]
+
+        //前面添加,参数可以多个
+        arr.unshift("efg",456); 
+        //8) ["efg", 456, 1, "b", {…}, ƒ, "abc", 123]
+
+        //后面删除,没有参数。有返回值,返回值是被删除数
+        let n = arr.pop(); 
+        console.log(n); //123
+        // (7) ["efg", 456, 1, "b", {…}, ƒ, "abc"]
+
+        //前面删除,没有参数。有返回值,返回值是被删除数
+        let x = arr.shift(); 
+        console.log(x); //efg
+        //(6) [456, 1, "b", {…}, ƒ, "abc"]
+
+        console.log(arr)
+    </script>
+</body>
+</html>

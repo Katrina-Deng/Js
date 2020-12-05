@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>按钮</button>
+    <p></p>
+    <script>
+      let arr = [0, -2, 8, 34, 13, 3, 7, 9];
+      let btn = document.querySelector('button');
+      let p = document.querySelector('p');
+      p.innerHTML = arr;
+
+      btn.onclick = function () {
+        arr.sort(function  () {
+            // 利用数学随机数 在 -0.5 ~ 0.5 之间随机取值
+            return Math.random() - 0.5;
+        })
+
+        p.innerHTML = arr;
+      }
+    </script>
+  </body>
+</html>

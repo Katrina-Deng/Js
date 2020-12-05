@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = ["一","九","七","五","六"];
+
+        let obj = {
+            "一": 1,
+            "九": 9,
+            "七": 7,
+            "五": 5,
+            "六": 6
+        }
+
+        arr.sort(function  (n1,n2) {
+            //n1 n2 就是obj 里面的key 值 "一","九","七","五","六"
+            // 根据对象的获取属性值的方法，让n1 n2 比较
+            return obj[n1] - obj[n2]
+        })
+        //["一", "五", "六", "七", "九"] 
+        console.log(arr)
+    </script>
+</body>
+</html>

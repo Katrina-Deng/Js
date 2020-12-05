@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = [1, 2, 3, 4, 5];
+      /* 
+        	splice(start[，length，item1，item2...])
+            start : 操作数组的起始位置
+            length : 操作数组的长度
+            item1，item2... : 添加的参数
+        */
+      //1.删除
+       arr.splice(2);
+      // (2) [1, 2]
+      //从下标第二个开始删除 length 没有给参数默认是到数组的结尾
+
+       arr.splice();
+      //5) [1, 2, 3, 4, 5]
+      //不给任何参数,原数组不改变
+
+       arr.splice(-1);
+      //(4) [1, 2, 3, 4] 若给负数就从后面开始删除
+
+       arr.splice(-10);
+      //[] 由于整体数组没有10长度,所以删除了全部的数据
+
+      // + length
+        arr.splice(2,2);
+      //(3) [1, 2, 5]
+      //从3 开始删除，删除两个长度的数据
+
+       arr.splice(-1,2);
+      //4) [1, 2, 3, 4]
+      // 负数从后面开始删除,但是5 后面已经没有数据，所以输出还是 [1, 2, 3, 4]
+
+      arr.splice(3, "abc");
+      //(5) [1, 2, 3, 4, 5]
+      //长度如果是一个非number类型,他默认转换成0 就是不操作任何数据,原数据返回
+
+      arr.splice(3, -1);
+      //(5) [1, 2, 3, 4, 5]
+      //长度如果是一个负数,他默认转换成0 就是不操作任何数据,原数据返回
+
+      //2.添加
+      //后面添加
+      arr.splice(arr.length,0,6,7);
+      //7) [1, 2, 3, 4, 5, 6, 7];
+
+      //前面添加
+      arr.splice(0,0,6,7);
+      // (7) [6, 7, 1, 2, 3, 4, 5]
+
+      //特定位置添加
+      arr.splice(3, 0, 6, 7);
+      // (7) [1, 2, 3, 6, 7, 4, 5]
+      //关键：是长度是0,不执行删除操作，就往原数组添加
+
+      //3. 替换
+      //原理,一边删除,一边添加
+      arr.splice(2, 2, 6, 7);
+      // (5) [1, 2, 6, 7, 5]
+
+      //返回值
+      let temp = arr.splice(2, 2, 6, 7);
+      console.log(temp);
+      //返回值是被删除的数据组成的数组
+
+      console.log(arr);
+    </script>
+  </body>
+</html>
