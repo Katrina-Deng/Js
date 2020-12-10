@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 地址栏信息
+        console.log(window.location)
+
+        // 网址
+        console.log(location.href)
+
+        // hash 哈希值  - 地址栏#后面的值 - 字符串
+        console.log(location.hash)
+
+        var hash = location.hash.substring(1);
+
+        console.log(hash);
+
+        // search值 截取并且转成对象
+        console.log(location.search)
+
+        // {a:1,b:2}
+        var arr = location.search.substring(1).split('&');
+
+        console.log(arr)
+
+        var obj ={};
+        arr.forEach(function(item,index){
+            // "a=1"
+            // ['a','1']
+            var subArr = item.split('=');
+            obj[subArr[0]] = subArr[1];
+        })
+
+        console.log(obj);
+
+
+    </script>
+</body>
+</html>
