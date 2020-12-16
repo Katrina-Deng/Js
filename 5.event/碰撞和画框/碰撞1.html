@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            div {
+                font: 16px/100px '微软雅黑';
+                text-align: center;
+                color: white;
+                border-radius: 12px;
+	            box-shadow: 2px 2px 10px 2px #CCCCCC;
+            }
+
+            .box1 {
+                width: 100px;
+                height: 100px;
+                background-color: brown;
+                position: absolute;
+                left: 0;
+                top: 0;
+	            cursor: pointer;
+            }
+
+            .box2 {
+                width: 100px;
+                height: 100px;
+                background-color: red;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+            }
+		</style>
+	</head>
+	<body>
+		<div class="box2">box2</div>
+		<div class="box1">box1</div>
+		<script>
+			let box1 = document.querySelector(".box1");
+			let box2 = document.querySelector(".box2");
+
+			function getStyle(obj, attr) {
+				return parseFloat(getComputedStyle(obj)[attr]);
+			}
+
+			box1.addEventListener('mousedown', function (e) {
+				let startL = getStyle(box1, "left");
+				let startT = getStyle(box1, "top");
+
+				let startX = e.clientX;
+				let startY = e.clientY;
+
+				function moveBox(e) {
+					let nowX = e.clientX;
+					let nowY = e.clientY;
+
+					let disX = nowX - startX;
+					let disY = nowY - startY;
+
+					box1.style.left = startL + disX + 'px';
+					box1.style.top = startT + disY + 'px';
+
+					e.preventDefault();
+					let isCollide = collide();
+					if(isCollide){
+						box1.style.background = "#006699";
+					}
+					else {
+						box1.style.background = "brown";
+					}
+				}
+
+				window.addEventListener('mousemove', moveBox);
+				window.addEventListener('mouseup', function () {
+					window.removeEventListener('mousemove',moveBox);
+				},{once:true})
+				e.preventDefault();
+			})
+			
+			function collide() {
+				let boxRect1 = box1.getBoundingClientRect();
+				let boxRect2 = box2.getBoundingClientRect();
+				
+				let boxRect1L = boxRect1.left;
+				let boxRect1T = boxRect1.top;
+				let boxRect1R = boxRect1.right;
+				let boxRect1B = boxRect1.bottom;
+
+				let boxRect2L = boxRect2.left;
+				let boxRect2T = boxRect2.top;
+				let boxRect2R = boxRect2.right;
+				let boxRect2B = boxRect2.bottom;
+				
+				return boxRect1L < boxRect2R && boxRect1B > boxRect2T && boxRect1R > boxRect2L && boxRect1T < boxRect2B;
+				
+			}
+		</script>
+	</body>
+</html>

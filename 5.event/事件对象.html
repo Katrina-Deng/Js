@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button>按钮</button>
+    </div>
+    <script>
+        let div = document.querySelector('div');
+
+        div.addEventListener('click',function (e) {
+            console.log(e.target);
+            //事件源对象
+            console.log(e.currentTarget);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>这是一段永远都不能复制的文字888</p>
+    <script>
+        window.addEventListener('contextmenu',function(e){
+            e.preventDefault();
+        })
+        
+        window.addEventListener('keydown',function(e){
+
+            // console.log(e.keyCode)
+            // 组合键的使用
+            if(e.ctrlKey && e.key == "c"){
+                console.log('复制了')
+
+                // 阻止复制
+                e.preventDefault();
+            }
+
+        })
+    </script>
+</body>
+</html>

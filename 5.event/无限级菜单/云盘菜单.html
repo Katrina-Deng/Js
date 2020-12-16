@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="data.js"></script>
+    <style>
+        .menu ul{
+            display: none;
+        }
+
+        .menu .show,.menu > ul {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+
+    </div>
+    <!-- <ul >
+        <li>
+            <h2>云盘</h2>
+            <ul>
+                <li>
+                    <h2>二级</h2>
+                    <ul>
+                        <li>
+                            <h2>三级</h2>
+                        </li>
+                        <li>
+                            <h2>三级</h2>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul> -->
+    <script>
+        var data = data;
+        var menu = document.querySelector('.menu');
+
+
+        function getChild(id){
+            return data.filter((item)=>item.pid==id)
+        }
+
+
+        function renderUl(data){
+            var html = '<ul>';
+            
+            data.forEach(item => {
+                html+=`
+                    <li>
+                        <h2>${item.title}</h2>
+                        ${getChild(item.id)&&renderUl(getChild(item.id))}
+                    </li>
+                `
+            });
+            html+='</ul>';
+            return html;
+        }
+
+        console.log(getChild(-1))
+
+        console.log(data)
+
+        menu.innerHTML = renderUl(getChild(-1));
+
+
+        menu.addEventListener('click',function(e){
+            var obj = e.target;
+            if(obj.tagName=='H2'){
+               var sub = obj.nextElementSibling;
+
+               console.log(sub)
+
+               sub.classList.toggle('show');
+            }
+        })
+
+    </script>
+</body>
+</html>

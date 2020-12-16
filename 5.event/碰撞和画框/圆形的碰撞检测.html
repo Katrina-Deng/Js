@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box1 {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            background: red;
+            border-radius: 50%;
+        }
+        #box2 {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div id="box1"></div>
+<div id="box2"></div>    
+<script src="mTween.js"></script>
+<script>
+{
+    let box1 = document.querySelector("#box1");
+    let box2 = document.querySelector("#box2");
+    drag(box1);
+    drag(box2);
+    function drag(el){
+        let mouseStart = {};
+        let postionStart = {};
+
+        let move = (e)=>{
+            let mouseNow = {
+                x: e.clientX,
+                y: e.clientY
+            };
+            let dis = {
+                x: mouseNow.x - mouseStart.x,
+                y: mouseNow.y - mouseStart.y
+            };
+            let l = dis.x + postionStart.x;
+            let t = dis.y + postionStart.y;
+            if(isContactCircle(box1,box2)){
+                box2.style.background = "green";
+            } else {
+                box2.style.background = "yellow";
+            }
+            css(el,"left",l);
+            css(el,"top",t);
+        }
+        el.addEventListener("mousedown",function(e){
+            mouseStart = {
+                x: e.clientX,
+                y: e.clientY
+            };
+            postionStart = {
+                x: css(el,"left"),
+                y: css(el,"top")
+            }
+            e.preventDefault();
+            document.addEventListener("mousemove",move);
+            document.addEventListener("mouseup",()=>{
+                document.removeEventListener("mousemove",move);
+            },{once:true});
+        });
+    }
+}
+// 检测两个元素，是否重叠(碰撞)
+function isContactCircle(el,el2){
+     // 两个圆心距离小于两个半径和就碰撞
+    let elRect = el.getBoundingClientRect();
+     // 元素1圆心坐标
+    let elCenter = {
+        x: elRect.left + elRect.width/2,
+        y: elRect.top + elRect.height/2
+    };
+    let el2Rect = el2.getBoundingClientRect();
+    // 元素2圆心坐标
+    let el2Center = {
+        x: el2Rect.left + el2Rect.width/2,
+        y: el2Rect.top + el2Rect.height/2
+    };
+    // 斜边的平方(圆心距的平方)
+    // let dis2 = (elCenter.x - el2Center.x)*(elCenter.x - el2Center.x) + (elCenter.y - el2Center.y)*(elCenter.y - el2Center.y);
+    // console.log(dis2)
+    let dis =Math.pow((elCenter.x - el2Center.x),2)+Math.pow((elCenter.y - el2Center.y),2);
+    console.log(dis);
+    
+    //斜边(圆心距)  Math.sqrt() 开平方
+    dis = Math.sqrt(dis);
+    // 圆心距 <= 半径和       
+    return dis <= elRect.width/2 + el2Rect.width/2;
+
+        //  勾股定理：斜边的平方 = 直角边1的平方 + 直角边2的平方
+    
+    // console.log(elRect.left,elRect.top);//圆左上角的坐标
+    // console.log(,elRect.top - elRect.width/2);//圆心坐标
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width:200px;
+            height: 200px;
+            background: burlywood;
+            position: absolute;
+        }
+
+        .newbox{
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var box =document.querySelector('div');
+        var l =0;
+        var t =0;
+
+        function getStyle(obj,attr){
+            return parseFloat(getComputedStyle(obj)[attr]);
+        }
+
+        box.addEventListener('mousedown',function(e){
+
+            clearInterval(timer);
+
+            var oldX = getStyle(box,'left');
+            var oldY = getStyle(box,'top');
+            var startX = e.clientX;
+            var startY = e.clientY;
+
+            var newBox = document.createElement('div');
+            newBox.className = 'newbox'
+            newBox.style.left = oldX +'px';
+            newBox.style.top = oldY +'px';
+            document.body.appendChild(newBox);
+
+            function move(e){
+                var disX = e.clientX - startX;
+                var disY = e.clientY - startY;
+
+                l = oldX + disX;
+                t = oldY + disY;
+
+
+                newBox.style.left = l+'px';
+                newBox.style.top = t+'px';
+            }
+
+            document.addEventListener('mousemove',move)
+
+            document.addEventListener('mouseup',function(){
+                document.removeEventListener('mousemove',move);
+
+                box.style.left = l +'px';
+                box.style.top = t +'px';
+
+                newBox.remove();
+            },{
+                once:true
+            })
+
+            e.preventDefault();
+        },false)
+
+        // 定时器 在什么时候执行
+        // 通过键盘按键 来控制开关
+
+        var toL = false;
+        var toT = false;
+        var toR = false;
+        var toB = false;
+
+        function run(){
+
+            if(toL){
+                l-=10;
+            }
+
+            if(toT){
+                t-=10;
+            }
+
+            if(toR){
+                l+=10;
+            }
+
+            if(toB){
+                t+=10;
+            }  
+
+            box.style.left = l+'px';
+            box.style.top = t+'px';
+
+            // console.log(1)
+
+        }
+
+        var timer =setInterval(run,30)
+        
+        window.addEventListener('keydown',function(e){
+            //clearInterval(timer)
+            //timer =setInterval(run,30)
+
+            // console.log(e.keyCode)
+
+            switch(e.keyCode){
+                case 37: 
+                    toL = true;
+                break;
+                case 38: 
+                    toT = true;
+                break;
+                case 39: 
+                    toR = true;
+                break;
+                case 40: 
+                    toB = true;
+                break;
+            }
+         
+        })
+
+        window.addEventListener('keyup',function(e){
+
+            // console.log(e.keyCode)
+
+            switch(e.keyCode){
+                case 37: 
+                    toL = false;
+                break;
+                case 38: 
+                    toT = false;
+                break;
+                case 39: 
+                    toR = false;
+                break;
+                case 40: 
+                    toB = false;
+                break;
+            }
+        })
+    
+    </script>
+</body>
+</html>

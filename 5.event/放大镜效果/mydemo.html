@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body >
+    <div id="box">
+      <div id="left">
+        <img src="images/img.jpg" id="img1" />
+        <div id="mask"></div>
+      </div>
+      <div id="right">
+        <div id="border">
+          <img src="images/img.jpg" id="img2" />
+        </div>
+      </div>
+    </div>
+    <script>
+      {
+        let left = document.querySelector("#left");
+        let mask = document.querySelector("#mask");
+        let img2 = document.querySelector("#img2");
+        let right = document.querySelector("#right");
+        
+  
+  
+        left.addEventListener("mouseenter",function (e) {
+          mask.style.display = "block";
+          right.style.display = "block";
+          
+          //获取mask 原始位置
+          let startX = getStyle(mask,"left");
+          let startY = getStyle(mask,"top");
+  
+  
+          //计算mask 尺寸
+          // //获取left的宽度
+          // let leftW = getStyle(left,"width");
+          // //获取right img 宽度
+          // let rImgW = img2.offsetWidth;
+          // //获取mask 宽度
+          // let maskRW = getStyle(right,"width");
+          // //计算比例值
+          // let scaleW = maskRW/rImgW;
+          // //得出 mask 宽
+          // let maskLW =  leftW * scaleW;
+          
+          //计算mask 尺寸优化合并
+          //计算比例值
+          let scaleW = getStyle(right,"width") /  img2.offsetWidth;
+          let scaleH = getStyle(right,"height") /  img2.offsetHeight;
+          mask.style.width = (scaleW * getStyle(left,"width")) + "px";
+          mask.style.height = (scaleH * getStyle(left,"height")) + "px";
+          
+          //计算移动最大值
+          let maxW = left.offsetWidth - mask.offsetWidth;
+          let maxH = left.offsetHeight - mask.offsetHeight;
+
+          // 右边范围控制的 显示最大值宽高值
+          let rMaxW = img2.offsetWidth - right.offsetWidth;
+          let rMaxH = img2.offsetHeight - right.offsetHeight;
+          
+          left.addEventListener('mousemove',function (e) {
+            // 元素边界距离可视区边界距离
+            let rect = left.getBoundingClientRect();
+            //由于定位关系，mask是根据父级left来定位，所以要减去原本left的 left 和top 值
+            let nowX = e.clientX-rect.left - mask.offsetWidth/2;
+            let nowY = e.clientY-rect.top - mask.offsetHeight/2;
+            // if(nowX<0){
+            //   nowX=0
+            // }; === nowX = Math.max(0,nowX);
+            // if (nowX>maxW){
+            //   nowX=maxW;
+            // } === nowX = Math.min(maxW,nowX);
+            //边界控制，
+            nowX = Math.max(0,nowX);
+            nowX = Math.min(maxW,nowX);
+            nowY = Math.max(0,nowY);
+            nowY = Math.min(maxH,nowY);
+          
+            //右边显示区域
+            //移动比例的距离 左边蒙版距离定位父级的left坐标/最大移动宽度 = 获取宽度移动比例
+            //移动比例的距离 左边蒙版距离定位父级的Top坐标/最大移动高度 = 获取高度移动比例
+            let scaleX = mask.offsetLeft/maxW;
+            let scaleY = mask.offsetTop/maxH;
+            
+            //图片是反方向移动
+            img2.style.left = -(scaleX * rMaxW) + 'px';
+            img2.style.top = -(scaleY * rMaxH) + 'px';
+  
+            mask.style.left = nowX + 'px';
+            mask.style.top = nowY + 'px';
+            
+          })
+        })
+        //获取元素的样式
+        function getStyle(obj,attr) {
+          return parseFloat(getComputedStyle(obj)[attr]);
+        }
+      }
+    </script>
+  </body>
+</html>

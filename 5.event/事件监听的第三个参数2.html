@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // contextmenu  鼠标右键事件
+        window.addEventListener('contextmenu',function(e){
+            console.log('鼠标右键')
+
+            // 清除浏览器默认行为
+            e.preventDefault();
+        },{
+            // 阻止清除浏览器默认行为
+            passive:true
+        })
+    </script>
+</body>
+</html>

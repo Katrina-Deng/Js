@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body style="height: 3000px;">
+    <script>
+        // // 滚轮滚动执行 火狐事件
+        // window.addEventListener('DOMMouseScroll',function(e){
+        //     console.log(e.detail)
+        //     if(e.detail>0){
+        //         console.log('向下')
+        //     }else{
+        //         console.log('向上')
+        //     }
+        // })
+
+
+        // // 滚轮滚动执行 chrome
+        // window.addEventListener('mousewheel',function(e){
+        //     console.log(e.wheelDelta)
+
+        //     if(e.wheelDelta>0){
+        //         console.log('向上')
+        //     }else{
+        //         console.log('向下')
+        //     }
+        // })
+        
+        window.addEventListener('mousewheel',function (e) {
+            console.log(e.wheelDelta);
+            if (e.wheelDelta>0){
+                console.log(e.wheelDelta);
+                console.log("up")
+            }
+            else {
+                console.log(e.wheelDelta);
+                console.log("down");
+            }
+        })
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        p{
+            width: 100px;
+            height: 200px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p></p>
+    </div>
+    <script>
+        var p = document.querySelector('p');
+        var div = document.querySelector('div');
+
+        // 父级内如果移入子级元素 会触发移出父级事件
+        // p.addEventListener('mouseover',function(){
+        //     console.log('移入p')
+        // })
+
+        // div.addEventListener('mouseover',function(){
+        //     console.log('移入div')
+        // })
+
+        // p.addEventListener('mouseout',function(){
+        //     console.log('移出p')
+        // })
+
+        // div.addEventListener('mouseout',function(){
+        //     console.log('移出div')
+        // })
+
+
+        // 这俩个事件 不会在鼠标移动父子级切换过程中触发
+        p.addEventListener('mouseenter',function(){
+            console.log('移入p')
+        })
+        div.addEventListener('mouseenter',function(){
+            console.log('移入div')
+        })
+
+        p.addEventListener('mouseleave',function(){
+            console.log('移出p')
+        })
+
+        div.addEventListener('mouseleave',function(){
+            console.log('移出div')
+        })
+
+    </script>
+</body>
+</html>

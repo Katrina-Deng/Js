@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .list{
+            border: 1px solid red;
+            width: 100px;
+            display: none;
+            position:fixed;
+        }
+        .list li{
+            list-style: none;
+            height: 30px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="list">
+        <li>添加</li>
+        <li>删除</li>
+        <li>刷新</li>
+    </ul>
+
+    <script>
+        var list = document.querySelector('.list');
+        var lis = list.querySelectorAll('li');
+        window.addEventListener('contextmenu',function(e){
+            console.log(1)
+            // 阻止浏览器默认行为
+            e.preventDefault();
+
+            // 显示自定义菜单
+            list.style.display = 'block';
+            var x = e.clientX;
+            var y = e.clientY;
+
+            list.style.left = x+'px';
+            list.style.top = y+'px';
+
+        })
+
+        window.addEventListener('click',function(){
+            list.style.display = 'none';
+        })
+
+        // 刷新页面
+        lis[2].addEventListener('click',function(){
+            location.reload();
+        })
+
+
+        // // 不建议
+        // window.oncontextmenu = function(){
+
+        //     console.log(2);
+
+        //     // 阻止浏览器默认行为
+        //     return false;
+        // }
+    </script>
+</body>
+</html>

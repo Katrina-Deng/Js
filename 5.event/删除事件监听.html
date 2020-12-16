@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // js当中 对象 是独立的 唯一的
+        // 取消/删除事件监听 必须删除的是命名函数
+        var fn1 = function(){
+            alert(1);
+        }
+
+        var fn2 = function(){
+            alert(1);
+        }
+
+        console.log(fn1==fn2) //false
+
+
+        document.addEventListener('click',fn1)
+        
+        // 命名函数的删除（无法删除匿名函数）
+        document.removeEventListener('click',fn1)
+    </script>
+</body>
+</html>

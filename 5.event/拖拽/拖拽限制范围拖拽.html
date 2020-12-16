@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 400px;
+            height: 400px;
+            border: 1px solid red;
+            margin:50px auto;
+            position: relative;
+        }
+        h1{
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1></h1>
+    </div>
+    <script>
+        var box = document.querySelector('h1');
+        var div = document.querySelector('div');
+
+
+        function getStyle(el,attr){
+            return parseFloat(getComputedStyle(el)[attr]);
+        }
+
+
+        box.addEventListener('mousedown',function(e){
+
+            var startL =getStyle(box,'left');
+            var startT = getStyle(box,'top');
+
+            // 记录鼠标按下的位置
+            var startX = e.clientX;
+            var startY = e.clientY;
+
+            function move(e){
+                console.log('move')
+                var nowX = e.clientX;
+                var nowY = e.clientY;
+
+                // 获取移动距离 - 差值
+                var disX = nowX - startX;
+                var disY = nowY - startY;
+
+                //当前位置 最小值
+                // 当前值 和最大值
+                var l = startL + disX;
+                var t = startT + disY;
+
+                var maxL = getStyle(div,'width') - getStyle(box,'width');
+                var maxT = getStyle(div,'height') - getStyle(box,'height');
+
+                console.log(maxL)
+
+                if(l < 0){
+                    l=0;
+                }
+                if(t < 0){
+                    t=0;
+                }
+
+                if(maxL<l){
+                    l = maxL;
+                }
+
+                if(maxT<t){
+                    t = maxT;
+                }
+
+                box.style.left = l +'px';
+                box.style.top = t +'px';
+            }
+
+            window.addEventListener('mousemove',move)
+
+            window.addEventListener('mouseup',function(){
+                // 清除鼠标移动事件
+                window.removeEventListener('mousemove',move);
+
+                console.log('up');
+            },{
+                once:true
+            })
+
+            // 阻止浏览器默认选中文字或图片
+            e.preventDefault();
+        })
+    </script>
+</body>
+</html>

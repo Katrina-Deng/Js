@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+    <p>这是一段文字</p>
+    <div></div>
+    <script>
+        var box = document.querySelector('div');
+
+
+        function getStyle(el,attr){
+            return parseFloat(getComputedStyle(el)[attr]);
+        }
+
+
+        box.addEventListener('mousedown',function(e){
+
+            var startL =getStyle(box,'left');
+            var startT = getStyle(box,'top');
+
+            // 记录鼠标按下的位置
+            var startX = e.clientX;
+            var startY = e.clientY;
+
+            function move(e){
+                console.log('move')
+                var nowX = e.clientX;
+                var nowY = e.clientY;
+
+                // 获取移动距离 - 差值
+                var disX = nowX - startX;
+                var disY = nowY - startY;
+
+                // 原本的位置(left,top) + 移动的距离 =当前位置
+
+                box.style.left = startL + disX +'px';
+                box.style.top = startT + disY +'px';
+            }
+
+            window.addEventListener('mousemove',move)
+
+            box.addEventListener('mouseup',function(){
+                // 清除鼠标移动事件
+                window.removeEventListener('mousemove',move);
+
+                console.log('up');
+            },{
+                once:true
+            })
+        })
+    </script>
+</body>
+</html>

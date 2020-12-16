@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div id="box">
+      <div id="left">
+        <img src="images/img.png" id="img1" />
+        <div id="mask"></div>
+      </div>
+      <div id="right">
+        <div id="border">
+          <img src="images/img.png" id="img2" />
+        </div>
+      </div>
+    </div>
+    <script>
+        var left = document.querySelector('#left');
+        var mask = document.querySelector('#mask');
+        var right = document.querySelector('#right');
+        var img2 = document.querySelector('#img2');
+
+
+        function getStyle(obj,attr){
+            return parseFloat(getComputedStyle(obj)[attr]);
+        }
+
+     
+        // 元素是display:None 无法获取元素自身宽高的
+        
+        left.addEventListener('mouseenter',function(e){
+
+            right.style.display = 'block';
+            mask.style.display = 'block';
+
+             // 右边科室宽度和原本图片的比例
+            //宽,高
+            var scaleX = getStyle(right,'width')/img2.offsetWidth;
+            var scaleY = getStyle(right,'height')/img2.offsetHeight;
+            // console.log(scaleX,scaleY);
+
+            //得到比例 scaleX scaleY 计算蒙版的大小
+            mask.style.width = getStyle(left,'width')*scaleX + 'px';
+            mask.style.height = getStyle(left,'height')*scaleY + 'px';
+
+            //边界控制,计算蒙版显示最大和最小范围
+            var maxL = left.offsetWidth - mask.offsetWidth;
+            var maxT = left.offsetHeight - mask.offsetHeight;
+            
+            // 右侧显示的最大left Top值
+            var rBoxMaxL = img2.offsetWidth - right.offsetWidth;
+            var rBoxMaxT = img2.offsetHeight - right.offsetHeight;
+            left.addEventListener('mousemove',function(e){
+                var rect = left.getBoundingClientRect();
+                var nowX = e.clientX-rect.left-mask.offsetWidth/2;
+                var nowY = e.clientY-rect.top-mask.offsetHeight/2;
+
+                if(nowX<0){
+                    nowX =0;
+                }
+                if(nowX>maxL){
+                    nowX = maxL;
+                }
+                
+                //左边和右边图片显示移动比例
+                var scaleMoveX = mask.offsetLeft/maxL;
+                var scaleMoveY = mask.offsetTop/maxT;
+                
+                //图片的移动和蒙版的移动方向是相反
+                img2.style.left = -scaleMoveX*rBoxMaxL+'px';
+                img2.style.top = -scaleMoveY*rBoxMaxT+'px';
+
+                 console.log(scaleMoveX);
+              
+                mask.style.left= nowX +'px';
+                mask.style.top= nowY +'px';
+            })
+
+        })
+    </script>
+  </body>
+</html>

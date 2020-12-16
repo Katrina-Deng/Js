@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>drag</title>
+		<style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            .box {
+                width: 300px;
+                height: 300px;
+	            border-radius: 12px;
+                background-color: #f87a75;
+                position: absolute;
+                left: 0;
+                top: 0;
+	            transition: 0.9s;
+            }
+            h1{
+	            margin-top: 50px;
+            }
+		</style>
+	</head>
+	<body>
+		<h1>我是一段文字啊</h1>
+		<div class="father">
+			<div class="box">
+			</div>
+		</div>
+		
+		<script>
+			let box = document.querySelector('.box');
+			let warp = document.querySelector('.father');
+			let l = 0;
+			let t = 0;
+			function getStyle(item, ele) {
+				return parseFloat(window.getComputedStyle(item)[ele]);
+			}
+
+			box.addEventListener('mousedown', function (e) {
+
+				let tempBox = box.cloneNode();
+				tempBox.style.opacity = "0.6";
+				tempBox.style.transition = "0s";
+				warp.append(tempBox);
+				let boxL = getStyle(box, "left");
+				let boxT = getStyle(box, "top");
+
+				//获取鼠标点击位置
+				let boxX = e.clientX;
+				let boxY = e.clientY;
+
+				function moveBox(e) {
+					//获取鼠标现在位置
+					let nowX = e.clientX;
+					let nowY = e.clientY;
+
+					//获取差值
+					let disL = nowX - boxX;
+					let disY = nowY - boxY;
+
+					l = tempBox.style.left = boxL + disL + 'px';
+					t = tempBox.style.top = boxT + disY + 'px';
+
+				
+				}
+
+				document.addEventListener('mousemove', moveBox);
+				
+				document.addEventListener("mouseup", function () {
+					window.removeEventListener('mousemove', moveBox);
+					box.style.left = l ;
+					box.style.top = t ;
+					warp.removeChild(tempBox);
+
+				}, {
+					once: true
+				});
+
+
+				e.preventDefault();
+			})
+		
+		
+		</script>
+	</body>
+</html>

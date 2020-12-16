@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            border: 1px solid #000;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        window.addEventListener('mousedown',function(e){
+            let downX = e.clientX;
+            let downY = e.clientY;
+
+            let box = document.createElement('div');
+            box.classList.add('box');
+            document.body.appendChild(box);
+
+
+            function move(e){
+                //有可能是负值,所以要取绝对值
+                let disX = Math.abs(e.clientX - downX) ;
+                let disY = Math.abs(e.clientY - downY);
+    
+                
+                box.style.left = Math.min(downX,e.clientX)  + 'px';
+                box.style.top = Math.min(downY,e.clientY)  + 'px';
+                
+                box.style.width = disX +'px';
+                box.style.height = disY +'px';
+
+            }
+
+            document.addEventListener('mousemove',move)
+
+            document.addEventListener('mouseup',function(){
+                document.removeEventListener('mousemove',move);
+            },{
+                once:true
+            })
+
+            e.preventDefault();
+        })
+    </script>
+</body>
+</html>
