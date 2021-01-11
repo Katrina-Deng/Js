@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>基于rem的适配</title>
+		<style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            html {
+                /*	iphone X width 375px 为了方便计算设置一个能整除的fontsize 15px ,
+					就是说一个fontsize 是屏幕的1/15
+				*/
+                /*font-size: 25px;*/
+                /*    修改font-size 27.6 px 适配iPhone 6*/
+                font-size: 27.6px
+            }
+
+            /*  三个盒子原本的宽度是 box1:130px box2:110px box3:135px, 高为100px
+                接下来我们要计算这3个box的宽高 px 等于多个个rem
+            */
+            /*
+                测试：iphone X 完全没有问题
+                     iPhone 6、7、8 width 414px 然后我们可以计算他的1/15是多少个像素 =27.6 px
+            */
+            .box1 {
+                float: left;
+                width: 5.2rem;
+                height: 4rem;
+                background: brown;
+            }
+
+            .box2 {
+                float: left;
+                width: 4.4rem;
+                height: 4rem;
+                background: greenyellow;
+            }
+
+            .box3 {
+                float: left;
+                width: 5.4rem;
+                height: 4rem;
+                background: rosybrown;
+            }
+		</style>
+	</head>
+	<body>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+		<script>
+			<!--利用js适配所有分辨率-->
+			//	获取屏幕宽度
+			function setSize() {
+				let size = innerWidth / 15;
+				document.querySelector('html').style.fontSize = size + 'px';
+			}
+			setSize();
+			window.onresize = setSize;
+		</script>
+	</body>
+</html>

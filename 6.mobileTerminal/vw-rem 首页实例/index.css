@@ -1,0 +1,98 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+h1,h2,h3,h4,p{
+    margin: 0;
+    /*禁止文字缩放*/
+    -webkit-text-size-adjust: none;
+}
+ul,li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+img{
+    border: none;
+    vertical-align: top;
+}
+a,button,input{
+    /*点击时候高亮操作*/
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-appearance: none;
+    border-radius: 0px;
+/*    ios 按钮有圆角，把他干掉*/
+}
+html{
+/*    rem 基础值: 100px = 1rem 当前宽度750px
+      则7.5rem = 100vw = 1 可视区宽度
+      则font-size = 100vw / 7.5rem = 13.3333333...
+*/
+    font-size: calc(100vw /7.5);
+}
+body{
+    font-size: .24rem;
+}
+
+header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 7.5rem;
+    height: .9rem;
+    background-color: #323436;
+    overflow: hidden;
+}
+#menu{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: .8rem;
+    height: 0;
+    background: url("img/menu.png" )no-repeat center;
+    padding-top: .9rem;
+    background-size: .4rem .35rem;
+}
+#login{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: .8rem;
+    height: 0;
+    padding-top: .9rem;
+    background: url("img/login.png" )no-repeat center;
+    background-size: .5rem .52rem;
+}
+#logo{
+    width: 7.5rem;
+    padding-top: .9rem;
+    background:url("img/logo.png") no-repeat center .27rem;
+    background-size: 1.83rem .44rem;
+}
+.nav{
+    width: 100vw;
+    overflow: scroll;
+}
+.picNav{
+    display: flex;
+}
+.picNav img{
+    width: 100vw;
+}
+.courses{
+    background-color: #fff;
+    padding: .1rem;
+}
+.courseList{
+    display: flex;
+    flex-wrap: wrap;
+}
+.courseList li{
+    box-sizing: border-box;
+    width: 3.45rem;
+    height: 6.38rem;
+    background-color: coral;
+    margin: .1rem;
+    box-shadow: 0px 0px 10px #c1c0c0;
+    border: 1px solid #000;
+}

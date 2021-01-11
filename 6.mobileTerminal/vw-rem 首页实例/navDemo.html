@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<title>Nav</title>
+		<link rel="stylesheet" href="./index.css">
+<!--		设置1px-->
+		<script>
+			let boCSS = document.createElement('style');
+			boCSS.innerHTML = `
+				.border1 {
+					border-width: ${1/window.devicePixelRatio}px !important;
+				}
+			`
+			document.head.appendChild(boCSS);
+		</script>
+	</head>
+	<body>
+		<header>
+			<a href="#" id="menu">菜单</a>
+			<a href="#" id="login">登录</a>
+			<h1 id="logo">Ellen.com</h1>
+		</header>
+		<div class="nav">
+			<ul class="picNav">
+				<li><a href="#"><img src="img/banner.png" alt=""> </a></li>
+				<li><a href="#"><img src="img/banner.png" alt=""></a></li>
+				<li><a href="#"><img src="img/banner.png" alt=""></a></li>
+				<li><a href="#"><img src="img/banner.png" alt=""></a></li>
+			</ul>
+		</div>
+		<div class="courses">
+			<ul class="courseList">
+				<li>我是图片按钮</li>
+				<li>我是图片按钮</li>
+				<li>我是图片按钮</li>
+				<li>我是图片按钮</li>
+			</ul>
+		</div>
+	</body>
+</html>

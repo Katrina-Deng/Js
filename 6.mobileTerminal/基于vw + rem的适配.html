@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>基于vw+rem的适配</title>
+		<style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            html {
+                /*	iphone X width 375px,
+					就是说一个fontsize 是屏幕的1/15
+					根据上面数据，计算 font-size = 100vm / 15 = 6.666...
+				*/
+				
+                font-size: 6.66vw;
+            }
+
+            .box1 {
+                float: left;
+                width: 5.2rem;
+                height: 4rem;
+                background: brown;
+            }
+
+            .box2 {
+                float: left;
+                width: 4.4rem;
+                height: 4rem;
+                background: greenyellow;
+            }
+
+            .box3 {
+                float: left;
+                width: 5.4rem;
+                height: 4rem;
+                background: rosybrown;
+            }
+		</style>
+	</head>
+	<body>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+
+	</body>
+</html>
