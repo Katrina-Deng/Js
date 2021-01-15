@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+//rem 基础值: 100px = 1rem 当前设计图宽度750px,根据具体设计图设置
+//则7.5rem = 100vw = 1 可视区宽度
+//则font-size = 100vw / 7.5rem = 13.3333333 ..vw
+
+html{
+  font-size: calc(100vw/7.5);
+}
+
+@function rem ($num){
+  @return ($num/100) * 1rem;
+}
+
+a{
+  text-decoration: none;
+}
+
+body{
+  margin: 0;
+  background-color: #f4fbfe;
+}
+p,h1,h2{
+  margin: 0;
+  padding: 0;
+}
+
+@mixin clear{
+  &:after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+.topNav{
+  display: flex;
+  height: rem(90);
+  background-color: #323436;
+  .btnLeft{
+    color: white;
+    width: rem(80);
+    font-size: rem(50);
+    text-align: center;
+    line-height: rem(90);
+
+  }
+  .btnRight{
+    color: white;
+    width: rem(90);
+    font-size: rem(40);
+    text-align: center;
+    line-height: rem(90);
+
+  }
+  .logo{
+    width: rem(580);
+    text-align: center;
+    img{
+      display: block;
+      margin: 0 auto;
+      margin-top: rem(23);
+      width: rem(183);
+      height: rem(44);
+    }
+  }
+}

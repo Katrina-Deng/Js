@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #list{
+            display: flex;
+            margin: 0 auto;
+        }
+        #list li{
+            border: 2px solid black;
+            height: 100px;
+        }
+        /*@media all and (min-width: 1024px) {*/
+        /*    #list{*/
+        /*        background: aliceblue;*/
+        /*    }*/
+        /*}*/
+        @media (min-width:1024px),(max-width:400px){
+            #list{
+                background: green;
+            }
+        }
+    </style>
+</head>
+<body>
+    <ul id="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+    </ul>
+</body>
+</html>

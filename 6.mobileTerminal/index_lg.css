@@ -1,0 +1,6 @@
+#list{
+    width: 1200px;
+}
+#list li{
+    width: 25%;
+}

@@ -67,7 +67,7 @@
           left.addEventListener('mousemove',function (e) {
             // 元素边界距离可视区边界距离
             let rect = left.getBoundingClientRect();
-            //由于定位关系，mask是根据父级left来定位，所以要减去原本left的 left 和top 值
+            //***由于定位关系，mask是根据父级left来定位，所以要减去原本left元素的 left 和top值***
             let nowX = e.clientX-rect.left - mask.offsetWidth/2;
             let nowY = e.clientY-rect.top - mask.offsetHeight/2;
             // if(nowX<0){

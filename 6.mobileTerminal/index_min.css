@@ -1,0 +1,44 @@
+body{
+    margin: 0;
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#list{
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+
+
+}
+#list li{
+    flex: none;
+    box-sizing: border-box;
+    border: 1px solid black;
+    height: 100px;
+    text-align: center;
+    width: 100%;
+}
+/*!* 屏幕宽度小于768*!*/
+/*@media (max-width:768px) {*/
+/*    #list li{*/
+/*        width: 100%;*/
+/*    }*/
+/*}*/
+/*!* 屏幕宽度大于768小于1024*!*/
+/*@media (min-width:768px) and (max-width: 1024px) {*/
+/*    #list li{*/
+/*        width: 50%;*/
+/*    }*/
+/*}*/
+/*!* 屏幕宽度大于1024px*!*/
+/*@media (min-width: 1024px) {*/
+/*    #list{*/
+/*        width: 1024px;*/
+/*    }*/
+/*    #list li{*/
+/*        width: 25%;*/
+/*    }*/
+/*}*/

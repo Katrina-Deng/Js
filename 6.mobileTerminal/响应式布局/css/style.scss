@@ -1,0 +1,215 @@
+@charset "utf-8";
+@import "global";
+
+//提取文字类
+@mixin font($size,$height,$color){
+  font: $size#{'/'}$height '微软雅黑' ;
+  color: $color;
+}
+//提取按钮类
+@mixin  btnCom($width,$height,$size){
+  margin: rem(5) auto 0;
+  height: $height;
+  width: $width;
+  border-radius: rem(25);
+  background-image: linear-gradient(to right bottom,#ffb371,#f87f33);
+  box-shadow: rem(6) rem(9) rem(5) #f9abae;
+  p{
+    @include font($size,rem(65),#fff5fd);
+    text-align: center;
+  }
+}
+
+.banner{
+  height: rem(460);
+  position: relative;
+  img{
+    width: rem(750);
+    height: rem(460);
+  }
+  .bannerInfo{
+    //opacity: .5;
+    position: absolute;
+    bottom: 0;
+    width: rem(750);
+    height: rem(60);
+    background-image: linear-gradient(transparent 10%,rgba(0,0,0,0.5));
+    transition: all linear 1s;
+    display: block;
+    p{
+      padding-right: rem(30);
+      line-height: rem(60);
+      text-align: right;
+      font-size: rem(30);
+      color: yellow;
+    }
+  }
+}
+
+.person{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: space-evenly;
+
+  &_card {
+    border-radius: rem(10);
+    overflow: hidden;
+    margin-top: rem(20);
+    width: rem(345);
+    height: rem(639);
+    background-color: white;
+    font-size: 0;
+    box-shadow: 0 0 rem(10) 0 rgba(255, 236, 241, 0.75);
+
+    img {
+      width: rem(345);
+      height: rem(385);
+      box-shadow: 0 0 rem(10) 0 #666666;
+    }
+
+    .pInfo {
+      height: rem(150);
+      overflow: scroll;
+      text-indent: 2em;
+      background-image: linear-gradient(45deg, rgba(77, 196, 226, 0.1), rgba(0, 119, 170, 0.2));
+      border-radius: rem(10);
+      margin-top: rem(5);
+      padding: rem(5) rem(26) rem(5) rem(26);
+      line-height: rem(36);
+      font-size: rem(24);
+      font-family: Microsoft YaHei;
+      color: #333333;
+    }
+
+    .pInfoT {
+      background-image: linear-gradient(45deg, rgba(207, 152, 223, 0.1), rgba(245, 139, 193, 0.2));
+    }
+
+    .pickBtn {
+      @include btnCom(rem(200),rem(65),rem(30))
+    }
+  }
+}
+
+.register{
+  margin-top: rem(24);
+  padding: 0 rem(52);
+  text-align: center;
+  .title{
+    @include font(rem(40),rem(84),#000);
+  }
+  .des{
+    @include font(rem(24),rem(40),#666);
+  }
+  .price{
+    @include font(rem(36),rem(90),#e15671);
+  }
+  .regBtn{
+    @include btnCom(rem(300),rem(70),rem(32));
+  }
+}
+
+.introduction{
+  margin-top: rem(43);
+  padding-top: rem(20)  ;
+  height: rem(630);
+  background-image: linear-gradient(to right bottom,#aed97b,#7fca69);
+  &_title{
+    @include font(rem(40),rem(71),#fff);
+    text-align: center;
+  }
+
+  &_item{
+    font-size: 0;
+    padding-left: rem(20);
+    height: rem(180);
+    &:nth-of-type(1){
+      .icon{
+        background-position: 0 rem(10);
+      }
+
+    }
+    &:nth-of-type(2){
+      .icon{
+        background-position: 0 rem(-140);
+      }
+
+    }
+    &:nth-of-type(3){
+      .icon{
+        background-position: 0 rem(-270);
+      }
+    }
+    &_item:before{
+      content: '';
+      width: 0;
+      height: 100%;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .icon{
+      height: rem(140);
+      width: rem(140);
+      display: inline-block;
+      vertical-align: middle;
+      border-radius: 50%;
+      background: #fff url("../img/icon.png") no-repeat 0 0 #{'/'} rem(140) rem(420);
+    }
+    .des{
+      display: inline-block;
+      vertical-align: middle;
+      padding-left: rem(20);
+      width: rem(550);
+      @include font(rem(26),rem(48),#fff);
+    }
+}
+
+
+}
+
+.perInfo{
+  margin-top: rem(10);
+  &_title{
+
+    text-align: center;
+    @include font(rem(40),rem(104),#333);
+  }
+  &_cardPanel{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-content: center;
+    .cardItem{
+      border-radius: rem(5);
+      margin-bottom: rem(5);
+      overflow: hidden;
+      width: rem(355);
+      height: rem(355);
+      position: relative;
+      img{
+        width:  rem(355) ;
+        height: rem(355);
+      }
+      .cardItemInfo{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: rem(55);
+        background-image: linear-gradient(transparent 10%,#000);
+        width: 100%;
+        .title{
+          float: left;
+          padding-left: rem(18);
+          @include font(rem(25),rem(60),#fff)
+        }
+        .function{
+          float: right;
+          padding:0 rem(10);
+          @include font(rem(20),rem(60),#fff)
+        }
+      }
+    }
+  }
+
+}
