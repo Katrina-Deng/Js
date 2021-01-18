@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Title</title>
+</head>
+<body>
+
+</body>
+<script type="module">
+	// import obj from './js/PartA.js';
+    // import {name,danceFn} from './js/PartA.js';
+    // import * as person from './js/PartA.js'
+    // console.log(obj);
+    // console.log(name,danceFn);
+    // console.log(person)
+
+
+	document.onclick = function () {
+		import ('./js/PartA.js').then(res => console.log(res));
+    }
+</script>
+</html>

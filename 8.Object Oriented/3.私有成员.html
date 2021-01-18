@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>class</title>
+</head>
+<body>
+
+</body>
+<script>
+
+	//私有成员
+	class Cat{
+		#nickname = "吸猫薄荷会上瘾";
+	    constructor(name) {
+	        this.name = name;
+	        this.age = 1;
+	        this.sex = "female";
+        }
+		#jump (){
+            console.log("i can jump");
+		}
+        voice(){
+	        console.log("喵");
+			this.#jump();
+		}
+		getNickname(){
+	        return this.#nickname;
+		}
+	}
+    let cat = new Cat('小花');
+    //console.log(cat.nickname); //undefined  webstorm tip: 没有 #-语法无法引用 private 成员
+    console.log(cat.getNickname());
+    cat.voice();
+</script>
+</html>

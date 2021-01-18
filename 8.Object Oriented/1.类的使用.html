@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>class</title>
+</head>
+<body>
+
+</body>
+<script>
+	class Cat{
+	    constructor(name) {
+	        this.name = name;
+	        this.age = 1;
+	        this.sex = "female";
+        }
+        voice(){
+	        console.log("喵");
+		}
+	}
+
+	let cat = new Cat('小花');
+    console.log(cat.name,cat.age,cat.sex);
+	cat.voice();
+
+    console.log(typeof Cat);
+    console.log(cat);
+</script>
+</html>

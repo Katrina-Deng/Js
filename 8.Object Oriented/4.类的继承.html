@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>class</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    //继承
+    class Father {
+        constructor(height) {
+            this.name = 'baba';
+            this.age = 30;
+            this.height = height;
+        }
+        run(){
+            console.log('run...')
+		}
+    }
+
+    class Son extends Father{
+        constructor(height) {
+            super(height);
+            this.hobby = 'read books';
+        }
+        run(){
+            super.run();
+            console.log('Son run');
+		}
+	}
+
+	let son = new Son('183cm');
+    console.log(son.name,son.age,son.height,son.hobby);
+    son.run();
+
+</script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>class</title>
+</head>
+<body>
+
+</body>
+<script>
+
+	//静态成员
+	class Cat{
+	    static nickname = "吸猫薄荷会上瘾";
+	    constructor(name) {
+	        this.name = name;
+	        this.age = 1;
+	        this.sex = "female";
+        }
+        static jump (){
+            console.log("i can jump");
+		}
+        voice(){
+	        console.log("喵");
+		}
+	}
+
+    console.log(Cat.nickname);
+	Cat.jump()
+</script>
+</html>
