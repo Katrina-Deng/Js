@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Title</title>
+</head>
+<body>
+
+</body>
+<script type="module">
+		// class Cat{
+		//     constructor() {
+		//         this.name = 'miaomiao';
+        //     }
+        //     jump(){
+        //         console.log('jump jump...');
+		// 	}
+		// }
+		//
+		// class Mycat extends Cat{
+		// 	jump() {
+        //         super.jump();
+        //         console.log('I can jump 2 meters high')
+        //     }
+        // }
+		//
+        // let mimi = new Mycat();
+		// mimi.jump();
+
+/*        class Cat{
+            constructor() {
+                this.name = 'miaomiao';
+            }
+            jump(){
+                console.log('jump jump...');
+        	}
+        }
+
+        function Jump() {
+            console.log("i can jump 2 meters");
+        }
+        //利用高阶函数,高阶函数以函数作为参数传入，返回一个可执行函数
+        const Decorator = function Mycat(fn1,fn2) {
+			return function () {
+                fn1();
+                fn2()
+            }
+        }
+
+        let myCat = new Cat();
+        let catJump = Decorator(myCat.jump,Jump);
+        console.log(catJump);
+        catJump();*/
+
+        class Cat{
+            constructor() {
+                this.name = 'miaomiao';
+            }
+            jump(){
+                console.log('jump jump...');
+            }
+        }
+
+        function Jump() {
+            console.log("i can jump 2 meters");
+        }
+		//利用原型链
+        Function.prototype.DecoratorFn = function (fn1) {
+            //自身调用执行
+            this();
+            fn1();
+        }
+
+        let myCat = new Cat();
+
+        myCat.jump.DecoratorFn(Jump);
+
+</script>
+</html>

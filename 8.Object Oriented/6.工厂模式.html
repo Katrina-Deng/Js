@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Title</title>
+</head>
+<body>
+
+</body>
+<script type="module">
+		class Cat{
+		    constructor() {
+		        this.name = 'miaomiao';
+            }
+		}
+        class Dog{
+            constructor() {
+                this.name = 'dogdog';
+            }
+        }
+
+        function Factory(type) {
+			switch (type) {
+			    case 'cat':
+			        return new Cat();
+                case 'dog':
+                    return new Dog();
+				default:
+				    break
+
+            }
+        }
+
+        let cat = Factory("cat");
+        console.log(cat);
+        let dog = Factory("dog");
+        console.log(dog);
+</script>
+</html>

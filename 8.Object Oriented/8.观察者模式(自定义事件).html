@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Title</title>
+</head>
+<body>
+
+</body>
+<script type="module">
+
+    function fn1() {
+        console.log("fn1...");
+    }
+    function fn2() {
+        console.log("fn2...");
+    }
+
+	//事件管理类
+    const handle = {};
+
+    //添加事件
+	function addEvent(eventName,fn) {
+	    //首次没有定义 eventName
+		if(typeof handle[eventName] === "undefined"){
+            handle[eventName] = [];
+		}
+        handle[eventName].push(fn);
+    }
+    //触发对象
+	function triggerEvent(eventName,...arg) {
+	    //如果该事件名称没有定义直接返回不执行
+		if(typeof handle[eventName] === "undefined"){
+		    return  console.log("没有该事件");
+		}
+		handle[eventName].forEach(fn =>{
+		    fn(...arg);
+		})
+    }
+    //移除事件
+	function removeEvent(eventName,fn) {
+        if(typeof handle[eventName] === "undefined"){
+            return  console.log("没有该事件");
+        }
+        handle[eventName].forEach((fnItem,index) =>{
+            if(fn == fnItem){
+                handle[eventName].splice(index,1)
+			}
+		})
+    }
+
+
+    addEvent("myEvent",fn1);
+    addEvent("myEvent",fn2);
+    console.log('>>1',handle);
+
+     triggerEvent("myEvent");
+    removeEvent("myEvent",fn2);
+
+    console.log('>>2',handle)
+
+
+</script>
+</html>
