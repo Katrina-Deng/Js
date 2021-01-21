@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/dialog.css">
+</head>
+
+<body>
+    <button id="btn">Click</button>
+    <button id="btn1">ClickInput</button>
+    <web-dialog title = "自定义组件标题" draggable = false ></web-dialog>
+<!--    <div class="k-wrapper"></div>
+    <div class="k-dialog">
+        <div class="k-header">
+            <span class="k-title">提示</span><span class="k-close">X</span>
+        </div>
+        <div class="k-body">
+            <span>这是一段文本</span>
+            <input class="input-inner" type="text" />
+        </div>
+        <div class="k-footer">
+            <span class="k-default">取消</span>
+            <span class="k-primary">确定</span>
+        </div>
+    </div>-->
+
+<script type="module">
+import dialog , {inputDialog} from './dialog.js';
+
+const btn = document.getElementById('btn');
+const myDialog = new dialog(
+        {
+            width:"400px",
+            height:'200px',
+            title: "我的标题",
+            success(){
+                console.log('success..');
+            },
+            cancel(){
+                console.log('cancel..');
+            }
+
+        }
+);
+
+btn.addEventListener('click',function () {
+
+    myDialog.init();
+    myDialog.open();
+})
+
+const btn1 = document.getElementById('btn1');
+const myDialogI = new inputDialog(
+        {
+            width:"400px",
+            height:'250px',
+            title: "我的标题",
+            success(e){
+                console.log('success..',e.detail);
+            },
+            cancel(){
+                console.log('cancel..');
+            },
+            draggable:false
+
+        }
+);
+
+btn1.addEventListener('click',function () {
+
+    myDialogI.open();
+})
+
+document.querySelector('web-dialog').addEventListener('success',function () {
+    console.log('自定义标签的确定回调事件');
+})
+
+</script>
+
+</body>
+
+
+</html>
