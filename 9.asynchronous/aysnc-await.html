@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+	const p1 = function mp1() {
+		return new Promise((resolve, reject) => {
+            setTimeout(()=>{
+              resolve('111')
+            },1000)
+        })
+    }
+
+
+    const p2 = function mp2() {
+        return new Promise((resolve, reject) => {
+            setTimeout(()=>{
+                resolve('222')
+            },1000)
+        })
+    }
+
+	async function fn() {
+		try{
+		    let resp1 = await p1();
+            console.log(resp1)
+			let resp2= await p2();
+            console.log(resp2);
+
+		}
+		catch (e) {
+            console.log(e)
+        }
+    }
+
+    fn();
+</script>
+</html>

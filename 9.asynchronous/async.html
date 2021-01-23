@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+	//异步函数2
+    function asFn2() {
+        setTimeout(function () {
+            console.log('fn2')
+        })
+    }
+
+    console.log(111)
+	as()
+	function as() {
+        console.log(222);
+    }
+    asFn1();
+    asFn2();
+    //异步函数1
+    function asFn1() {
+		setTimeout(function () {
+            console.log('fn1')
+        })
+    }
+    console.log(333)
+
+</script>
+</html>

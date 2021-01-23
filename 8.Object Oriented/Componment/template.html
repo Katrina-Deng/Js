@@ -12,7 +12,7 @@
 <body>
     <button id="btn">Click</button>
     <button id="btn1">ClickInput</button>
-    <web-dialog title = "自定义组件标题" draggable = false ></web-dialog>
+    <web-dialog title = "myComponent title" draggable = false ></web-dialog>
 <!--    <div class="k-wrapper"></div>
     <div class="k-dialog">
         <div class="k-header">
@@ -36,7 +36,8 @@ const myDialog = new dialog(
         {
             width:"400px",
             height:'200px',
-            title: "我的标题",
+            title: "我的标题2",
+            draggable: false,
             success(){
                 console.log('success..');
             },
@@ -66,7 +67,6 @@ const myDialogI = new inputDialog(
                 console.log('cancel..');
             },
             draggable:false
-
         }
 );
 
@@ -74,6 +74,7 @@ btn1.addEventListener('click',function () {
 
     myDialogI.open();
 })
+
 
 document.querySelector('web-dialog').addEventListener('success',function () {
     console.log('自定义标签的确定回调事件');

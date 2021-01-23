@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			background: darkred;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+	</div>
+</body>
+<script>
+
+	const box = document.querySelector('.box');
+
+
+	 function move(ele,target,direction) {
+
+	    return new Promise((resolve) => {
+            function run() {
+                //转成number 结果带px
+                let start = parseInt(window.getComputedStyle(ele,null)[direction]);
+                //利用 1 -1 控制方向
+                let dirArrow= (target - start) / Math.abs((target - start));
+                let speed = 5 * dirArrow;
+                start += speed;
+                //如果 start 为 300 target 为 0
+                //start > = target 条件马上成立，就不会执行回调
+                // 可以让target start 绝对值 进行对比， start 不停减少当两者绝对值小于speed 证明运动完成了
+                if(Math.abs(target - start) <= 5){
+                    resolve('run over ...');
+                }
+                else {
+                    setTimeout(()=>{
+                        box.style[direction] = start + 'px';
+                        //这里会有递归
+                        run();
+                    },20);
+
+                }
+            }
+
+            run();
+		})
+
+
+    }
+
+    async function rectRun() {
+		try {
+            await move(box,300,'left');
+            await move(box,300,'top');
+            await move(box,0,'left');
+           let reS =  await move(box,0,'top');
+            console.log(reS);
+
+        }catch (e) {
+            console.log(e)
+        }
+    }
+
+    rectRun();
+
+/*    move(box,300,'left').then(res=>{
+        return move(box,300,'top')
+		}).then(res=>{
+            return move(box,0,'left')
+        }).then(res=>{
+            return move(box,0,'top')
+        }).then(res=>{
+        console.log('run over..')
+	}).catch(rej =>{
+        console.log('err--',rej)
+	})*/
+
+
+
+  /*  move(box,300,'left',function () {
+		move(box,300,'top',function () {
+           move(box,0,'left',function () {
+               move(box,0,'top',function () {
+                   console.log('run over');
+               })
+           })
+        })
+    });*/
+	/*
+	* 这样会同步执行，他不先执行move(box,300,'left'); 再执行move(box,300,'top');
+	*
+	* move(box,300,'left');
+	* move(box,300,'top');
+	*
+	* 这时候就需要回调
+	*
+	* */
+
+
+
+
+</script>
+</html>
