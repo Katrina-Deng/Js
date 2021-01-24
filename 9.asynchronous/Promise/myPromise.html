@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Title</title>
+	<script src = 'Mypromise.js'></script>
+</head>
+<body>
+	<h1>仿写的Mypromise</h1>
+
+</body>
+<script>
+
+	// setTimeout(()=>{
+    //     console.log('setTimeout');
+	// })
+	// const mPro = new Mypromise((res,rej)=>{
+	//     // setTimeout(()=>{
+    //         res('res...');
+	// 	// },1000)
+	//
+	// 	//rej('rej...');
+	// });
+
+	// mPro.then((res) =>{
+    //     console.log('onres...');
+	// },(err)=>{
+    //     console.log('err...');
+	// })
+
+	// mPro.then((res)=>{
+    //     console.log(111)
+	// })
+	// mPro.then((res)=>{
+    //     console.log(222)
+	// })
+    // console.log(mPro);
+
+	let p = new Mypromise((res,rej)=>{
+	    res('succeeded');
+	})
+
+	p.then(res=>{
+        console.log(res);
+        return new Mypromise((res)=>{
+            res('new Mypromise res')
+		});
+	}).then(res=>{
+        console.log(res);
+	})
+    console.log(p)
+
+</script>
+</html>
