@@ -1,46 +1,88 @@
+/**
+ * app.js 
+ *  后端对服务器代码的入口文件
+ *  我们会在该文件中监听网络（端口）
+ *  当有客户端请求了，那么就返回对应的数据
+ */
+
 const http = require('http');
 const fs = require('fs');
-const mine = require('./mime.json');
+const mime = require('./mime.json');
+const data = require('./data.json');
+const nunjucks = require('nunjucks');
+
+// console.log('mime', mime);
+
+// 根据不同的环境（node / Browser）
+const tpl = new nunjucks.Environment(
+    // 模板存放路径
+    new nunjucks.FileSystemLoader('template')
+);
+
+// var res = nunjucks.renderString('Hello {{ username }}', { username: 'James' });
+// console.log('res', res);
+
+// 创建服务器对象
+const server = http.createServer( (req, res) => {
 
 
-const server = http.createServer((req, res) => {
-    let content = '';
-    let url = req.url;
-    if (url.startsWith('/static')) {
-        //如果请求的url 是/static 就读取静态资源文件
-        let path = __dirname + url;
-
+    // 对静态的资源内容进行处理
+    if (req.url.startsWith('/static')) {
+        // 根据规则找到服务器中指定的文件
+        let file = __dirname + req.url;
+        // console.log(file);
+        let content = '';
         try {
-            //统一设置
-            // res.writeHead(200,{'Content-Type':'text/html;charset=utf-8'});
-            //设置mime
-
-            content = fs.readFileSync(path);
-            let lastIndex = path.lastIndexOf('.');
-            let ext = path.substring(lastIndex);
-            // console.log('ext', ext);
-            /*
-            * ext .html
-              ext .css
-              ext .jpeg
-            * */
-            let mineName = mine[ext];
-            // console.log(ext,mineName)
-            res.writeHead(200,{'Content-Type':mineName});
-            res.write(content);
-
-        } catch (e) {
-            content = fs.readFileSync('./static/404.html');
-            res.write(content);
-
-        } finally {
-            res.end();
+            content = fs.readFileSync(file);
+            
+            let lastIndexOf = file.lastIndexOf('.');
+            let ext = file.substring(lastIndexOf);
+            let fileMime = mime[ext];
+            res.writeHead(200, {
+                'Content-Type': fileMime
+            });
+        } catch(e) {
+            console.log(e);
+            content = fs.readFileSync('./template/404.html');
+            res.writeHead(404, {
+                'Content-Type': 'text/html;charset=utf-8'
+            });
         }
+        res.write(content);
+        res.end();
+        return;
     }
 
+    switch(req.url) {
+        case '/':
+            res.writeHead(200, {
+                'Content-Type': 'text/html;charset=utf-8'
+            });
+            
+            let tempTitle = '开课吧';
+            
+            // content = tpl.renderString(
+            //     fs.writeFileSync('./template/index.html'),
+            //     {
+            //         tempTitle
+            //     }
+            // );
+            content = tpl.render('index.html', {
+                tempTitle,
+                data
+            });
 
-})
+            res.write(content);
+            break;
+        case '/xiaomimi':
+            // 静态
+            res.write('这是我的小秘密');
+            break;
+            
+    }
 
-server.listen(3000, () => {
-    console.log('server open', 'http://localhost:3000');
-})
+    // res.write('Hello kkb!');
+    res.end();
+} );
+
+server.listen(8081);
