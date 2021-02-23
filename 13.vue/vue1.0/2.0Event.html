@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue Event</title>
+</head>
+<body>
+
+    <div id="app" :test="test"> {{msg}}
+        {{num}}
+        <button @click ="num++">Click</button>
+    </div>
+    
+    <script>
+       app = new Vue({
+        el: '#app',
+        data:{
+            msg:'Hello Vue',
+            test: 'attrVue',
+            num:0
+        },
+        methods: {
+            clickBtn(e){
+                console.log(e);
+                console.log("click button");
+            }
+        },
+
+       })
+    </script>
+</body>
+</html>

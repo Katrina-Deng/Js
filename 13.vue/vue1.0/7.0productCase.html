@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>product</title>
+</head>
+<body>
+
+    <div id="app">
+        <ul>
+            <li v-for='item in product'>
+                {{item.name}} --- {{item.count}}
+                <button @click="item.count++">+</button>
+                <button @click="item.count--" v-if="item.count>0">-</button>
+                <span v-if= 'item.count <= 0'> 产品卖没有了</span>
+                <input type="text" v-model.number = 'item.count'/>
+            </li>
+        </ul>
+
+        <span>Total: {{totalNum}}</span>
+        {{num}}
+        {{doubleNum}}
+        <button @click="num++">count</button>
+    </div>
+    <script>
+       app = new Vue({
+        el: '#app',
+        data:{
+            product:[
+                {
+                    count:2,
+                    name:'苹果'
+                },
+                {
+                    count:1,
+                    name:'香蕉'
+                },
+                {
+                    count:4,
+                    name:'水蜜桃'
+                },
+            ], 
+            num: 1
+        },
+
+        computed: {
+            totalNum() {
+                return this.product.reduce(function(total,item){
+                        return total + item.count
+                },0)
+            },
+            doubleNum(){
+                return this.num * 2
+            }
+        },
+       })
+    </script>
+</body>
+</html>

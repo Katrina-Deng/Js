@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue</title>
+</head>
+<body>
+
+    <div id="app"> {{msg}}
+        <div v-for = '(item,index) in list' :key = "index" v-if = 'item.age >= 13'>
+            {{index}} --> {{item.name}} --{{item.age}}
+        </div>
+    </div>
+    <script>
+       app = new Vue({
+        el: '#app',
+        data:{
+            msg:'Hello Vue',
+            list:[
+                {
+                    name:'Ellen',
+                    age:12
+                },
+                {
+                    name:'Katty',
+                    age:15
+                },
+            ]
+        }
+       })
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue</title>
+</head>
+<body>
+
+    <!-- mvvm -->
+    <!-- app div 是一个视图层view -->
+    <!-- vue 构造器是一个 模型层 model -->
+    <!-- vm 层就是vm框架给我们写好的，把视图和模型结合起来，所以我们只要关心数据就可以了 -->
+    <!-- vm 起来的方法就是使用vue api el -->
+    <div id="app" :test="test"> {{msg}}</div>
+
+    <script>
+       app = new Vue({
+        el: '#app',
+        data:{
+            msg:'Hello Vue',
+            test: 'attrVue'
+        }
+
+       })
+    </script>
+</body>
+</html>

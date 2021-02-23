@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+      // 全局注册
+      Vue.component("ComponentA", {
+
+        model:{
+          prop: 'countFn',
+          event: 'changeCount'
+
+        },
+        props: {
+          countFn: '',
+          value:''
+        },
+
+        data() {
+          return {
+            count: 0,
+          };
+        },
+
+        template: `<div>ComponentA
+          <hr />
+          countFn: {{countFn}}
+          <br />
+          {{count}}
+          <button @click="handClick">click</button>
+          </div>`,
+
+        methods: {
+          handClick() {
+            this.count++;
+            this.$emit("changeCount", this.count);
+          },
+        },
+      });
+      app = new Vue({
+        el: "#app",
+
+        template: `
+            <div> 
+                {{msg}}
+                {{count}}
+                <ComponentA v-model="count"></ComponentA>
+            </div>
+        `,
+        data: {
+          msg: "Hello Vue",
+          // count 这里要定义一下
+          count: 0,
+        },
+      });
+    </script>
+  </body>
+</html>

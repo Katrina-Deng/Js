@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+      // 全局注册
+      Vue.component("ComponentA", {
+
+        props:{
+          title:{
+            type:String,
+            required: true,
+            default: 'ComponentA title'
+          },
+          student:{
+              type:Object,
+              validator(val){
+                  return val.name === 'ellen'
+              }
+          }
+        },
+        template: `<div>ComponentA
+          {{title}}
+          <hr />
+          {{count}}
+          <button @click="handClick">click</button>
+          </div>`,
+
+        data() {
+          return {
+            count: 1
+          }
+        },
+
+        methods: {
+          handClick(){
+            // console.log(this.count);
+            // this.count
+            this.$emit("change",this.count);
+          }
+          
+        },
+      });
+      app = new Vue({
+        el: "#app",
+        // :student  绑定一下把它转成object
+        template: `
+            <div> 
+                {{msg}}
+                <ComponentA title='123' :student="{name:'ellen'}" @change='clickCount'></ComponentA>
+            </div>
+        `,
+        data: {
+          msg: "Hello Vue",
+        },
+        methods: {
+          clickCount(count){
+              console.log('father'+count);
+          }
+        },  
+      });
+    </script>
+  </body>
+</html>
