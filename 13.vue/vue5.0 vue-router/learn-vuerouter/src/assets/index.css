@@ -1,0 +1,11 @@
+img {
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 #eee;
+}
+
+h3 {
+  text-align: center;
+  line-height: 50px;
+}

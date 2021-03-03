@@ -1,0 +1,135 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: whitesmoke;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:active {
+  color: inherit;
+}
+h3 {
+  padding: 0;
+  margin: 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+.el-main {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+}
+.el-header {
+  background-color: white;
+}
+.eheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 980px;
+  margin: 0 auto;
+}
+.eheader h3 {
+  margin-right: 20px;
+  display: inline-block;
+  font-size: 30px;
+  line-height: 60px;
+  padding-left: 10px;
+}
+.eheader .eItem {
+  color: #666;
+}
+
+.mainTitle {
+  font-size: 35px;
+  line-height: 70px;
+}
+
+.mainContianer {
+  /* background-color: red; */
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.mainContianer .heroItem {
+  /* background-color: red; */
+  background-color: #f8f8ff;
+  border-radius: 5px;
+  width: 300px;
+  padding: 10px;
+  margin-right: 10px;
+  box-sizing: border-box;
+  font-size: 0;
+  box-shadow: 0 0 10px 0 #eee;
+}
+.mainContianer .heroItem img {
+  width: 280px;
+}
+.mainContianer .heroItem span {
+  margin-top: 5px;
+  border-radius: 5px;
+  display: block;
+  line-height: 40px;
+  font-size: 16px;
+  letter-spacing: 5px;
+  background: linear-gradient(150deg, transparent, #eed5b7);
+}
+
+.backLink {
+  text-decoration: none; 
+  padding: 10px 20px;
+  width: 100px;
+  height: 35px;
+  margin: 0 auto;
+  line-height: 35px;
+  background: #E0FFFF;
+  border-radius: 30px;
+  box-shadow: 0 0 10px 0 #E6E6FA;
+}
+
+.mainPanel {
+  width: 100%;
+  /* background-color: red; */
+  font-size: 0;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.mainPanel img {
+  width: 700px;
+  margin-bottom: 30px;
+  border-radius: 3px;
+  box-shadow: 0 0 10px #666;
+}
+
+.mainPanel .detail {
+  padding: 20px;
+  width: 700px;
+  margin: 0 auto;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background: linear-gradient(150deg, #87ceeb, #87ceff);
+}
+.mainPanel .pos {
+  font-size: 20px;
+  line-height: 50px;
+  text-align: left;
+}
+.mainPanel .des {
+  font-size: 16px;
+  text-align: left;
+}
+
+.backLink{
+    background-color: lightcoral;
+}
+.secretPanel{
+    color: #229;
+}
