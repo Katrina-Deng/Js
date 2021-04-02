@@ -1,0 +1,5 @@
+<!--components/comball/comball.wxml-->
+<text>components/comball/comball.wxml</text>
+<view class="hold-ball">
+  <text bindtap="tapBall">{{name}}</text>
+</view>

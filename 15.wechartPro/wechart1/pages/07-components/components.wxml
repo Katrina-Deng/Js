@@ -1,0 +1,6 @@
+<!--pages/07-components/components.wxml-->
+<text>pages/07-components/components.wxml</text>
+<view class="container">
+  <comBall name='小程序' bind:tapBall='tapBall' ></comBall>
+</view>
+

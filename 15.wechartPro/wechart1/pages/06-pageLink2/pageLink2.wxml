@@ -1,0 +1,8 @@
+<!--pages/06-pageLink2/pageLink2.wxml-->
+<text>pages/06-pageLink2/pageLink2.wxml</text>
+<view class="container">
+  <text> {{title}} </text>
+  <navigator open-type="navigateBack">返回一级页面</navigator>
+  <button bindtap="backto">返回一级页面</button>
+
+</view>

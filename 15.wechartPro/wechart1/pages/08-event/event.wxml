@@ -1,0 +1,9 @@
+<!--pages/08-event/event.wxml-->
+<text>pages/08-event/event.wxml</text>
+<view bindtap="tabWapper">
+  <text  bindtap="tabText">事件冒泡</text>
+</view>
+
+<view capture-bind:tap="tabWapper">
+  <text  bindtap="tabText">事件捕抓</text>
+</view>

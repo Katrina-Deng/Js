@@ -1,12 +1,15 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/08-event/event",
+    "pages/07-components/components",
     "pages/06-pageLink/pageLink",
+    "pages/06-pageLink2/pageLink2",
     "pages/05-pageLife/pageLife",
     "pages/04-appjs/appjs",
     "pages/03-wxs/wxs",
     "pages/02-wxss/wxss",
     "pages/01-grammar/grammar",
+    "pages/index/index",
     "pages/logs/logs"
   ],
   "window": {

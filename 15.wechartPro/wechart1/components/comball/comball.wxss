@@ -1,0 +1,17 @@
+/* components/comball/comball.wxss */
+.hold-ball{
+  width: 100rpx;
+  height: 100rpx;
+  background-color: #AED9E0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #FAF3DD;
+  font-size: 24rpx;
+  position: fixed;
+  bottom: 30rpx;
+  right: 30rpx;
+  box-shadow: 0rpx 4rpx 20rpx 0 #eee;
+  text-shadow: 0rpx 0rpx 10rpx 0 #ddd;
+}

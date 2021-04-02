@@ -1,2 +1,8 @@
 <!--pages/06-pageLink/pageLink.wxml-->
 <text>pages/06-pageLink/pageLink.wxml</text>
+<view class="container">
+  <text> {{motto}} </text>
+  <navigator url="../06-pageLink2/pageLink2">去二级页面</navigator>
+  <button bindtap="toindex">返回首页</button>
+  <button bindtap="tosublink">二级页</button>
+</view>
