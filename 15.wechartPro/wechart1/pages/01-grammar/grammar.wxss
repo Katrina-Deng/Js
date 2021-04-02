@@ -1,0 +1,9 @@
+/* pages/01-grammar/grammar.wxss */
+.content{
+  font-size: 18px;
+  color: blue;
+  padding: 10px;
+}
+text{
+  display: block;
+}

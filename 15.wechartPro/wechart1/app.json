@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/06-pageLink/pageLink",
+    "pages/05-pageLife/pageLife",
+    "pages/04-appjs/appjs",
+    "pages/03-wxs/wxs",
+    "pages/02-wxss/wxss",
+    "pages/01-grammar/grammar",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#409eff",
+    "navigationBarTitleText": "彩云天气",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "backgroundColor": "#eee",
+    "borderStyle": "white",
+    "selectedColor":"#513B56",
+    "list": [{
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/homeSel.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "日志",
+        "iconPath": "images/heart.png",
+        "selectedIconPath": "images/heartSel.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

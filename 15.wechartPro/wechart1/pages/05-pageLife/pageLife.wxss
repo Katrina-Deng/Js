@@ -1,0 +1,6 @@
+/* pages/05-pageLife/pageLife.wxss */
+.views{
+  width: 750rpx;
+  height: 2500rpx;
+  background-color: burlywood;
+}

@@ -1,0 +1,34 @@
+<!--pages/01-grammar/grammar.wxml-->
+<template name="temp">
+  <view>
+    <text>{{subtitle}}</text>
+    <block wx:for="{{foods}}" wx:key='id'>
+       <text>{{item.name}}</text>
+    </block>
+  </view>
+</template>
+
+<text>grammar.wxml</text>
+<view class="content">
+  <text class="title">{{title}}</text>
+  <text>{{1+1+'次出击'+'\n'}} </text>
+  <text>{{name==='2'?'麦当劳':'肯德基'}}</text>
+
+  <text wx:if="{{food==='水果'}}">苹果</text>
+  <text wx:elif="{{food==='奶茶'}}">珍珠奶茶</text>
+  <text wx:else>卖光了</text>
+
+  <block wx:if="{{food==='奶茶'}}">
+    <text>芋圆奶茶</text>
+    <text>红豆奶茶</text>
+  </block>
+  <block wx:for="{{foods}}" wx:key='id' wx:for-item='ele'>
+    <text>{{index}}：{{ele.name}}</text>
+  </block>
+  <view>
+    <template is='temp' data='{{subtitle:"模板",foods}}'></template>
+  </view>
+</view>
+
+
+

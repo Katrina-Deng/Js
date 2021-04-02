@@ -1,0 +1,43 @@
+/* pages/02-wxss/wxss.wxss */
+@import '../../mod/mod.wxss';
+.title{
+  color: brown;
+}
+.mottopx{
+  font-size: 60rpx;
+}
+
+.blocks{
+  /* 正方形 */
+  width: 750rpx;
+  height: 750rpx;
+  background-color: #00acec;
+  background-image: url(https://z3.ax1x.com/2021/04/02/ceKnGd.png);
+}
+/* <a href="https://imgtu.com/i/ceKnGd"><img src="https://z3.ax1x.com/2021/04/02/ceKnGd.png" alt="ceKnGd.png" border="0" /></a> */
+
+.item{
+  width: 100rpx;
+  height: 100rpx;
+  background-color: yellowgreen;
+  border:1px solid red;
+}
+.item2{
+  position: relative;
+  width: 300rpx;
+  height: 300rpx;
+  left: 100rpx;
+}
+.item2-1{
+  position: absolute;
+  top: -7rpx;
+}
+.item3{
+  width: 200rpx;
+  height: 200rpx;
+  background: #00ecac;
+  position: fixed;
+}
+.item3-1{
+  position: relative;
+}
